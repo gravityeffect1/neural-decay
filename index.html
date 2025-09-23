@@ -533,6 +533,66 @@
                 </div>
             </aside>
         </main>
+
+        <div class="widget">
+            <div class="widget-header">
+                <h2 class="widget-title">
+                    <i class="fas fa-images"></i> GALLERY
+                </h2>
+            </div>
+            <div class="widget-content" style="padding: 15px;">
+                <div style="display: flex; justify-content: space-around; align-items: center; gap: 10px;">
+                    <img src="images/brain_visualizer.jpg" alt="Digital Consciousness Interface"
+                         style="width: 200px; 
+                               height: 200px; 
+                               object-fit: cover; 
+                               border-radius: 3px; 
+                               border: 1px solid var(--border-color); 
+                               cursor: pointer; 
+                               transition: all 0.3s ease;"
+                         onclick="openImageModal(this)"
+                         onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+
+                    <img src="images/cyber_hands.jpg" alt="Cyber Interface"
+                         style="width: 200px; 
+                               height: 200px; 
+                               object-fit: cover; 
+                               border-radius: 3px; 
+                               border: 1px solid var(--border-color); 
+                               cursor: pointer; 
+                               transition: all 0.3s ease;"
+                         onclick="openImageModal(this)"
+                         onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+
+                    <img src="images/3heads.jpg" alt="3heads"
+                         style="width: 200px; 
+                               height: 200px; 
+                               object-fit: cover; 
+                               border-radius: 3px; 
+                               border: 1px solid var(--border-color); 
+                               cursor: pointer; 
+                               transition: all 0.3s ease;"
+                         onclick="openImageModal(this)"
+                         onmouseover="this.style.borderColor='var(--accent-red)'; this.style.boxShadow='0 0 10px rgba(255, 0, 64, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+
+                    <img src="images/bioinfo.jpg" alt="bioinformatics"
+                         style="width: 200px; 
+                               height: 200px; 
+                               object-fit: cover; 
+                               border-radius: 3px; 
+                               border: 1px solid var(--border-color); 
+                               cursor: pointer; 
+                               transition: all 0.3s ease;"
+                         onclick="openImageModal(this)"
+                         onmouseover="this.style.borderColor='#9b59b6'; this.style.boxShadow='0 0 10px rgba(155, 89, 182, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <footer id="contact">
@@ -637,88 +697,8 @@
             renderCategoriesWidget(mockPosts);
         });
     </script>
-<div class="widget">
-    <div class="widget-header">
-        <h2 class="widget-title">
-            <i class="fas fa-microscope"></i> NEURAL_INTERFACE
-        </h2>
-    </div>
-    <div class="widget-content" style="padding: 10px;">
-        <img src="images/brain_visualizer.jpg" alt="Digital Consciousness Interface"
-             style="width: 100%; 
-                    height: 120px; 
-                    object-fit: cover; 
-                    border-radius: 3px; 
-                    border: 1px solid var(--accent-green); 
-                    cursor: pointer; 
-                    transition: all 0.3s ease;"
-             onclick="openImageModal(this)"
-             onmouseover="this.style.boxShadow='0 0 15px rgba(0, 255, 65, 0.5)'"
-             onmouseout="this.style.boxShadow='none'">
-        
-        <div style="font-family: 'Share Tech Mono', monospace; 
-                   font-size: 0.7rem; 
-                   color: var(--accent-cyan); 
-                   text-align: center; 
-                   margin-top: 8px;">
-            <i class="fas fa-brain"></i> Digital Consciousness Interface
-        </div>
-    </div>
-</div>
-
-<!-- Add this LAB GALLERY widget after your TAGS widget -->
-<div class="widget">
-    <div class="widget-header">
-        <h2 class="widget-title">
-            <i class="fas fa-images"></i> LAB_GALLERY
-        </h2>
-    </div>
-    <div class="widget-content" style="padding: 15px;">
-        <div style="display: flex; justify-content: space-around; align-items: center; gap: 10px;">
-            
-            <img src="images/cyber_hands.jpg" alt="Cyber Interface"
-                 style="width: 30%; 
-                       height: 60px; 
-                       object-fit: cover; 
-                       border-radius: 3px; 
-                       border: 1px solid var(--border-color); 
-                       cursor: pointer; 
-                       transition: all 0.3s ease;"
-                 onclick="openImageModal(this)"
-                 onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
-                 onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-
-            <img src="images/3heads.jpg" alt="3heads"
-                 style="width: 30%; 
-                       height: 60px; 
-                       object-fit: cover; 
-                       border-radius: 3px; 
-                       border: 1px solid var(--border-color); 
-                       cursor: pointer; 
-                       transition: all 0.3s ease;"
-                 onclick="openImageModal(this)"
-                 onmouseover="this.style.borderColor='var(--accent-red)'; this.style.boxShadow='0 0 10px rgba(255, 0, 64, 0.3)'"
-                 onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-
-            <img src="images/nioinfo.jpg" alt="bioinformatics"
-                 style="width: 30%; 
-                       height: 60px; 
-                       object-fit: cover; 
-                       border-radius: 3px; 
-                       border: 1px solid var(--border-color); 
-                       cursor: pointer; 
-                       transition: all 0.3s ease;"
-                 onclick="openImageModal(this)"
-                 onmouseover="this.style.borderColor='#9b59b6'; this.style.boxShadow='0 0 10px rgba(155, 89, 182, 0.3)'"
-                 onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-        </div>
-    </div>
-</div>
-
-<!-- Add this modal HTML just before your closing </body> tag -->
-
     <script src="paper.js"></script>
-    \<div id="imageModal" style="display: none; 
+    <div id="imageModal" style="display: none; 
                            position: fixed; 
                            z-index: 1000; 
                            left: 0; 
