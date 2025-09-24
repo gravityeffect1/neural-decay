@@ -643,27 +643,27 @@
                 category: 'coding',
                 date: '2024-12-15',
                 excerpt: 'An interactive web application visualizing peripheral blood smear components - erythrocytes, platelets, and leukocytes in motion. Built with HTML5 Canvas and JavaScript for medical education.',
-                content: `# Plasmyrage: Interactive Blood Smear Visualization
+                content: `Plasmyrage: Interactive Blood Smear Visualization
 
-## Project Overview
+Project Overview
 Plasmyrage is an interactive web application that simulates a peripheral blood smear in motion, showing erythrocytes, platelets, and leukocytes coursing within a vessel lumen. The visualization demonstrates neutrophils engaging invading bacteria, providing an educational tool for understanding blood cell morphology and function.
 
-## Technical Implementation
+ Technical Implementation
 
-### Core Technologies
+Core Technologies
 - **HTML5 Canvas** for real-time rendering
 - **Vanilla JavaScript** for animation logic
 - **CSS3** for responsive design
 - **GitHub Pages** for deployment
 
-### Key Features
+ Key Features
 - Real-time particle animation system
 - Accurate cell morphology rendering
 - Interactive blood vessel simulation
 - Educational annotations and labels
 - Responsive design for multiple devices
 
-## Code Architecture
+ Code Architecture
 
 \`\`\`javascript
 class BloodCell {
@@ -696,38 +696,38 @@ class BloodCell {
 }
 \`\`\`
 
-## Challenges Solved
+ Challenges Solved
 
-### 1. Realistic Cell Movement
+ 1. Realistic Cell Movement
 Implementing fluid dynamics to simulate how different blood cells move through vessels:
 - Varying cell sizes affect flow patterns
 - Margination effects for leukocytes
 - Laminar flow considerations
 
-### 2. Accurate Morphology
+ 2. Accurate Morphology
 Each cell type required specific rendering algorithms:
 - Erythrocytes: Biconcave disc shape
 - Neutrophils: Segmented nucleus visualization
 - Platelets: Small, irregular fragments
 
-### 3. Performance Optimization
+ 3. Performance Optimization
 Managing hundreds of animated particles:
 - Object pooling for cell instances
 - Efficient collision detection algorithms
 - Canvas optimization techniques
 
-## Educational Impact
+ Educational Impact
 The visualization helps medical students understand:
 - Blood cell identification in smears
 - Relative cell sizes and proportions
 - Normal vs. abnormal cell morphology
 - Immune system responses (neutrophil-bacteria interactions)
 
-## Live Demo
+ Live Demo
 **[View Plasmyrage Live](https://gravityeffect1.github.io/plasmyrage/)**
 
-**Tech Stack**: HTML5, JavaScript, CSS3  
-**Purpose**: Medical education tool`,
+Tech Stack**: HTML5, JavaScript, CSS3  
+Purpose**: Medical education tool`,
                 tags: ['javascript', 'canvas', 'medical-education', 'visualization', 'biology']
             },
             {
@@ -738,28 +738,28 @@ The visualization helps medical students understand:
                 excerpt: 'A Streamlit web application for designing CRISPR guide RNAs. Input target sequences and get optimized gRNA suggestions with scoring algorithms and off-target analysis.',
                 content: `# Guide Finder: CRISPR gRNA Design Tool
 
-## Project Overview
+ Project Overview
 Guide Finder is a web-based bioinformatics tool built with Streamlit that assists researchers in designing optimal guide RNAs (gRNAs) for CRISPR-Cas9 gene editing experiments. The application analyzes target DNA sequences and provides ranked gRNA candidates based on efficiency predictions and off-target risk assessment.
 
-## Technical Architecture
+ Technical Architecture
 
-### Core Technologies
+ Core Technologies
 - **Streamlit** for web interface
 - **Python** for bioinformatics algorithms  
 - **Biopython** for sequence manipulation
 - **Pandas** for data processing
 - **Plotly** for interactive visualizations
 
-### Key Features
+ Key Features
 - Target sequence input and validation
 - gRNA candidate identification and scoring
 - Off-target prediction algorithms
 - Interactive results visualization
 - Export functionality for lab use
 
-## Algorithm Implementation
+Algorithm Implementation
 
-### 1. gRNA Discovery Pipeline
+ 1. gRNA Discovery Pipeline
 
 \`\`\`python
 import re
@@ -792,24 +792,24 @@ class GuideRNAFinder:
         return sorted(guides, key=lambda x: x['efficiency_score'], reverse=True)
 \`\`\`
 
-## User Interface Design
+ User Interface Design
 
-### Streamlit Application Structure
+ Streamlit Application Structure
 \`\`\`python
 import streamlit as st
 import plotly.graph_objects as go
 
 def main():
-    st.title("🧬 Guide Finder: CRISPR gRNA Design Tool")
+    st.title("Guide Finder: CRISPR gRNA Design Tool")
     st.markdown("*Optimize your gene editing experiments*")
     
-    # Sidebar for input parameters
+    Sidebar for input parameters
     with st.sidebar:
         st.header("Configuration")
         pam_type = st.selectbox("PAM Sequence", ["NGG", "NAG", "NGA"])
         min_score = st.slider("Minimum Efficiency Score", 0.0, 1.0, 0.5)
     
-    # Main input area
+     Main input area
     target_sequence = st.text_area(
         "Enter Target DNA Sequence", 
         height=150,
@@ -823,10 +823,10 @@ def main():
                 display_results(results)
 \`\`\`
 
-## Live Application
+ Live Application
 **[Open Guide Finder](https://guidefinder.streamlit.app/)**
 
-## Usage Statistics & Impact
+Usage Statistics & Impact
 Since deployment:
 - **500+ analyses** performed by researchers
 - **95% user satisfaction** in feedback surveys
