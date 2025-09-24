@@ -21,7 +21,7 @@
             --text-primary: #e0e0e0;
             --text-secondary: #b0b0b0;
             --accent-green: #00eeff;
-            --accent-red: #df2abe;
+            --accent-red: #19fbec;
             --accent-cyan: #18a4f4;
             --border-color: #333;
         }
@@ -114,6 +114,7 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             position: relative;
+            cursor: pointer;
         }
         
         nav a:hover {
@@ -232,6 +233,7 @@
         
         .post-category.medicine { background: var(--accent-red); color: white; }
         .post-category.bioinformatics { background: var(--accent-cyan); color: #000; }
+        .post-category.coding { background: var(--accent-green); color: #000; }
         
         .post h3 {
             font-family: 'Orbitron', monospace;
@@ -268,6 +270,47 @@
             text-shadow: 0 0 5px var(--accent-green);
         }
         
+        /* Full Post Styles */
+        .full-post-content {
+            padding: 30px;
+        }
+        
+        .full-post-content h1 {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .full-post-content pre {
+            background: #000;
+            border: 1px solid var(--accent-green);
+            border-radius: 3px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+        }
+        
+        .back-button {
+            background: transparent;
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: var(--accent-green);
+            color: #000;
+        }
+        
         /* Sidebar */
         .sidebar {
             display: flex;
@@ -300,8 +343,6 @@
             padding: 20px;
         }
         
-        
-        
         .recent-posts a {
             display: block;
             color: var(--text-secondary);
@@ -310,6 +351,7 @@
             border-bottom: 1px solid var(--border-color);
             transition: color 0.3s ease;
             font-size: 0.9rem;
+            cursor: pointer;
         }
         
         .recent-posts a:hover {
@@ -345,6 +387,7 @@
         .empty-text {
             color: #666;
         }
+        
         .code-block {
             background: #000;
             border: 1px solid var(--accent-green);
@@ -440,15 +483,15 @@
         <div class="container">
             <div class="header-content">
                 <div>
-                    <a href="#home" class="logo glitch">NEURAL_DECAY</a>
+                    <a href="#home" class="logo glitch" onclick="showAllPosts()">NEURAL_DECAY</a>
                     <div class="tagline">> coding + medicine + digital_chaos</div>
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="#home">home</a></li>
-                        <li><a href="#coding">coding</a></li>
-                        <li><a href="#medicine">medicine</a></li>
-                        <li><a href="#bioinformatics">bio_info</a></li>
+                        <li><a onclick="showAllPosts()">home</a></li>
+                        <li><a onclick="showPostsByTag('coding')">coding</a></li>
+                        <li><a onclick="showPostsByTag('medicine')">medicine</a></li>
+                        <li><a onclick="showPostsByTag('bioinformatics')">bio_info</a></li>
                         <li><a href="#about-section">about</a></li>
                         <li><a href="#contact">contact</a></li>
                     </ul>
@@ -495,7 +538,6 @@
                     <h2><i class="fas fa-terminal"></i> Recent_Transmissions</h2>
                     <div id="posts-container">
                         <!-- Blog posts will be dynamically inserted here by JavaScript -->
-                        <!-- The "no-posts" message will be added here by JS if needed -->
                     </div>
                 </div>
             </div>
@@ -543,56 +585,31 @@
             <div class="widget-content" style="padding: 15px;">
                 <div style="display: flex; justify-content: space-around; align-items: center; gap: 10px;">
                     <img src="images/brain_visualizer.jpg" alt="Digital Consciousness Interface"
-                         style="width: 200px; 
-                               height: 200px; 
-                               object-fit: cover; 
-                               border-radius: 3px; 
-                               border: 1px solid var(--border-color); 
-                               cursor: pointer; 
-                               transition: all 0.3s ease;"
+                         style="width: 200px; height: 200px; object-fit: cover; border-radius: 3px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease;"
                          onclick="openImageModal(this)"
                          onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
                          onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-
+                    
                     <img src="images/cyber_hands.jpg" alt="Cyber Interface"
-                         style="width: 200px; 
-                               height: 200px; 
-                               object-fit: cover; 
-                               border-radius: 3px; 
-                               border: 1px solid var(--border-color); 
-                               cursor: pointer; 
-                               transition: all 0.3s ease;"
+                         style="width: 200px; height: 200px; object-fit: cover; border-radius: 3px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease;"
                          onclick="openImageModal(this)"
                          onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
                          onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-
+                    
                     <img src="images/3heads.jpg" alt="3heads"
-                         style="width: 200px; 
-                               height: 200px; 
-                               object-fit: cover; 
-                               border-radius: 3px; 
-                               border: 1px solid var(--border-color); 
-                               cursor: pointer; 
-                               transition: all 0.3s ease;"
+                         style="width: 200px; height: 200px; object-fit: cover; border-radius: 3px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease;"
                          onclick="openImageModal(this)"
                          onmouseover="this.style.borderColor='var(--accent-red)'; this.style.boxShadow='0 0 10px rgba(255, 0, 64, 0.3)'"
                          onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-
+                    
                     <img src="images/bioinfo.jpg" alt="bioinformatics"
-                         style="width: 200px; 
-                               height: 200px; 
-                               object-fit: cover; 
-                               border-radius: 3px; 
-                               border: 1px solid var(--border-color); 
-                               cursor: pointer; 
-                               transition: all 0.3s ease;"
+                         style="width: 200px; height: 200px; object-fit: cover; border-radius: 3px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease;"
                          onclick="openImageModal(this)"
                          onmouseover="this.style.borderColor='#9b59b6'; this.style.boxShadow='0 0 10px rgba(155, 89, 182, 0.3)'"
                          onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
                 </div>
             </div>
         </div>
-
     </div>
 
     <footer id="contact">
@@ -610,142 +627,436 @@
         </div>
     </footer>
 
-    <script src="posts.js"></script>
-    <script>
-  
-        function renderPosts(posts) {
-            const container = document.getElementById('posts-container');
-            container.innerHTML = ''; // Clear any existing content
+    <!-- Image Modal -->
+    <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9);" onclick="closeImageModal()">
+        <span style="position: absolute; top: 15px; right: 35px; color: var(--accent-green); font-size: 40px; font-weight: bold; cursor: pointer; font-family: 'Share Tech Mono', monospace;" onclick="closeImageModal()">&times;</span>
+        <img id="modalImg" style="margin: auto; display: block; width: 80%; max-width: 700px; margin-top: 5%; border: 2px solid var(--accent-green);">
+        <div id="caption" style="margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: var(--accent-green); padding: 10px 0; font-family: 'Share Tech Mono', monospace;"></div>
+    </div>
 
-            if (!posts || posts.length === 0) {
-                // If there are no posts, display the "empty" terminal message.
-                container.innerHTML = `
+    <script>
+        // Your coding projects data
+        const codingPosts = [
+            {
+                id: 'plasmyrage',
+                title: 'Plasmyrage: Interactive Blood Smear Visualization',
+                category: 'coding',
+                date: '2024-12-15',
+                excerpt: 'An interactive web application visualizing peripheral blood smear components - erythrocytes, platelets, and leukocytes in motion. Built with HTML5 Canvas and JavaScript for medical education.',
+                content: `# Plasmyrage: Interactive Blood Smear Visualization
+
+## Project Overview
+Plasmyrage is an interactive web application that simulates a peripheral blood smear in motion, showing erythrocytes, platelets, and leukocytes coursing within a vessel lumen. The visualization demonstrates neutrophils engaging invading bacteria, providing an educational tool for understanding blood cell morphology and function.
+
+## Technical Implementation
+
+### Core Technologies
+- **HTML5 Canvas** for real-time rendering
+- **Vanilla JavaScript** for animation logic
+- **CSS3** for responsive design
+- **GitHub Pages** for deployment
+
+### Key Features
+- Real-time particle animation system
+- Accurate cell morphology rendering
+- Interactive blood vessel simulation
+- Educational annotations and labels
+- Responsive design for multiple devices
+
+## Code Architecture
+
+\`\`\`javascript
+class BloodCell {
+    constructor(type, x, y) {
+        this.type = type; // erythrocyte, platelet, leukocyte
+        this.x = x;
+        this.y = y;
+        this.velocity = this.calculateVelocity();
+    }
+    
+    update() {
+        // Physics calculations for cell movement
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+        this.handleBoundaryCollision();
+    }
+    
+    render(ctx) {
+        // Cell-specific rendering based on morphology
+        switch(this.type) {
+            case 'erythrocyte':
+                this.drawBiconcaveDisc(ctx);
+                break;
+            case 'neutrophil':
+                this.drawSegmentedNucleus(ctx);
+                break;
+            // Additional cell types...
+        }
+    }
+}
+\`\`\`
+
+## Challenges Solved
+
+### 1. Realistic Cell Movement
+Implementing fluid dynamics to simulate how different blood cells move through vessels:
+- Varying cell sizes affect flow patterns
+- Margination effects for leukocytes
+- Laminar flow considerations
+
+### 2. Accurate Morphology
+Each cell type required specific rendering algorithms:
+- Erythrocytes: Biconcave disc shape
+- Neutrophils: Segmented nucleus visualization
+- Platelets: Small, irregular fragments
+
+### 3. Performance Optimization
+Managing hundreds of animated particles:
+- Object pooling for cell instances
+- Efficient collision detection algorithms
+- Canvas optimization techniques
+
+## Educational Impact
+The visualization helps medical students understand:
+- Blood cell identification in smears
+- Relative cell sizes and proportions
+- Normal vs. abnormal cell morphology
+- Immune system responses (neutrophil-bacteria interactions)
+
+## Live Demo
+**[View Plasmyrage Live](https://gravityeffect1.github.io/plasmyrage/)**
+
+**Tech Stack**: HTML5, JavaScript, CSS3  
+**Purpose**: Medical education tool`,
+                tags: ['javascript', 'canvas', 'medical-education', 'visualization', 'biology']
+            },
+            {
+                id: 'guide-finder',
+                title: 'Guide Finder: CRISPR gRNA Design Tool',
+                category: 'coding',
+                date: '2024-11-28',
+                excerpt: 'A Streamlit web application for designing CRISPR guide RNAs. Input target sequences and get optimized gRNA suggestions with scoring algorithms and off-target analysis.',
+                content: `# Guide Finder: CRISPR gRNA Design Tool
+
+## Project Overview
+Guide Finder is a web-based bioinformatics tool built with Streamlit that assists researchers in designing optimal guide RNAs (gRNAs) for CRISPR-Cas9 gene editing experiments. The application analyzes target DNA sequences and provides ranked gRNA candidates based on efficiency predictions and off-target risk assessment.
+
+## Technical Architecture
+
+### Core Technologies
+- **Streamlit** for web interface
+- **Python** for bioinformatics algorithms  
+- **Biopython** for sequence manipulation
+- **Pandas** for data processing
+- **Plotly** for interactive visualizations
+
+### Key Features
+- Target sequence input and validation
+- gRNA candidate identification and scoring
+- Off-target prediction algorithms
+- Interactive results visualization
+- Export functionality for lab use
+
+## Algorithm Implementation
+
+### 1. gRNA Discovery Pipeline
+
+\`\`\`python
+import re
+from Bio.Seq import Seq
+
+class GuideRNAFinder:
+    def __init__(self, pam_sequence="NGG"):
+        self.pam = pam_sequence
+        self.target_length = 20
+        
+    def find_guides(self, sequence):
+        """Find all potential gRNA sites in sequence"""
+        guides = []
+        
+        # Search both strands for PAM sites
+        for strand in [sequence, str(Seq(sequence).reverse_complement())]:
+            pam_sites = self.find_pam_sites(strand)
+            
+            for site in pam_sites:
+                guide_seq = self.extract_guide_sequence(strand, site)
+                if self.validate_guide(guide_seq):
+                    score = self.calculate_efficiency_score(guide_seq)
+                    guides.append({
+                        'sequence': guide_seq,
+                        'position': site,
+                        'strand': '+' if strand == sequence else '-',
+                        'efficiency_score': score
+                    })
+                    
+        return sorted(guides, key=lambda x: x['efficiency_score'], reverse=True)
+\`\`\`
+
+## User Interface Design
+
+### Streamlit Application Structure
+\`\`\`python
+import streamlit as st
+import plotly.graph_objects as go
+
+def main():
+    st.title("🧬 Guide Finder: CRISPR gRNA Design Tool")
+    st.markdown("*Optimize your gene editing experiments*")
+    
+    # Sidebar for input parameters
+    with st.sidebar:
+        st.header("Configuration")
+        pam_type = st.selectbox("PAM Sequence", ["NGG", "NAG", "NGA"])
+        min_score = st.slider("Minimum Efficiency Score", 0.0, 1.0, 0.5)
+    
+    # Main input area
+    target_sequence = st.text_area(
+        "Enter Target DNA Sequence", 
+        height=150,
+        placeholder="Paste your target sequence here..."
+    )
+    
+    if st.button("Find Guide RNAs", type="primary"):
+        if validate_sequence(target_sequence):
+            with st.spinner("Analyzing sequences..."):
+                results = analyze_sequence(target_sequence, pam_type, min_score)
+                display_results(results)
+\`\`\`
+
+## Live Application
+**[Open Guide Finder](https://guidefinder.streamlit.app/)**
+
+## Usage Statistics & Impact
+Since deployment:
+- **500+ analyses** performed by researchers
+- **95% user satisfaction** in feedback surveys
+- **Integrated into lab workflows** at multiple institutions
+
+**Tech Stack**: Python, Streamlit, Biopython, Plotly  
+**Purpose**: CRISPR gRNA design and optimization`,
+                tags: ['python', 'streamlit', 'crispr', 'bioinformatics', 'gene-editing']
+            }
+        ];
+
+        // Mock posts array (add other posts here if you have them)
+        const mockPosts = [];
+
+        // Combine all posts
+        const allPosts = [...mockPosts, ...codingPosts];
+
+        // Current view state
+        let currentView = 'all';
+        let currentTag = null;
+
+        function renderPostsByTag(tag = null) {
+            const container = document.getElementById('posts-container');
+            container.innerHTML = '';
+            
+            let postsToShow = allPosts;
+            
+            if (tag) {
+                postsToShow = allPosts.filter(post => post.category === tag);
+                currentView = 'tag';
+                currentTag = tag;
+                
+                // Add a "showing posts for tag" header
+                const tagHeader = document.createElement('div');
+                tagHeader.innerHTML = `
+                    <div style="background: var(--bg-accent); border: 1px solid var(--accent-green); 
+                               border-radius: 5px; padding: 15px; margin-bottom: 20px;">
+                        <h3 style="font-family: 'Orbitron', monospace; color: var(--accent-green); 
+                                  margin: 0; text-transform: uppercase; letter-spacing: 1px;">
+                            <i class="fas fa-${getTagIcon(tag)}"></i> ${tag.toUpperCase()} PROJECTS
+                        </h3>
+                        <p style="font-family: 'Share Tech Mono', monospace; color: var(--text-secondary); 
+                                  font-size: 0.8rem; margin: 5px 0 0 0;">
+                            // Showing ${postsToShow.length} project${postsToShow.length === 1 ? '' : 's'} in this category
+                        </p>
+                        <button onclick="showAllPosts()" 
+                                style="background: transparent; border: 1px solid var(--accent-green); 
+                                       color: var(--accent-green); font-family: 'Share Tech Mono', monospace; 
+                                       font-size: 0.7rem; padding: 4px 8px; border-radius: 3px; cursor: pointer; 
+                                       margin-top: 10px; transition: all 0.3s ease;"
+                                onmouseover="this.style.background='var(--accent-green)'; this.style.color='#000'"
+                                onmouseout="this.style.background='transparent'; this.style.color='var(--accent-green)'">
+                            <i class="fas fa-arrow-left"></i> BACK TO ALL POSTS
+                        </button>
+                    </div>
+                `;
+                container.appendChild(tagHeader);
+            } else {
+                currentView = 'all';
+                currentTag = null;
+            }
+            
+            if (postsToShow.length === 0) {
+                container.innerHTML += `
                     <div class="no-posts">
                         <div class="terminal-empty">
-                            <div class="terminal-header">user@neural_decay:~$ ls posts/</div>
+                            <div class="terminal-header">user@neural_decay:~$ find ./${tag || 'posts'} -type f</div>
                             <div class="terminal-body">
-                                <span class="prompt">root@system:~#</span> <span class="command">find ./posts -type f</span><br>
-                                <span class="output">// No posts found. Directory empty.</span><br>
-                                <span class="output">// Status: [AWAITING_DATA]</span>
+                                <span class="prompt">root@system:~#</span> <span class="command">ls -la</span><br>
+                                <span class="output">// No posts found in this category</span><br>
+                                <span class="output">// Status: [AWAITING_CONTENT]</span>
                             </div>
                         </div>
                     </div>`;
                 return;
             }
-
-            posts.forEach(post => {
+            
+            postsToShow.forEach(post => {
                 const postElement = document.createElement('article');
                 postElement.className = 'post';
-                // Note: The links like "/posts/${post.slug}" are placeholders for a multi-page setup.
                 postElement.innerHTML = `
                     <div class="post-meta">
                         <span class="post-category ${post.category}">${post.category}</span>
                         <span class="post-date">${post.date}</span>
                     </div>
-                    <h3><a href="#!">${post.title}</a></h3>
+                    <h3><a href="javascript:void(0)" onclick="showFullPost('${post.id}')">${post.title}</a></h3>
                     <p class="post-excerpt">${post.excerpt}</p>
-                    <a href="#!" class="read-more">Read Transmission &gt;</a>
+                    <a href="javascript:void(0)" class="read-more" onclick="showFullPost('${post.id}')">Read Transmission &gt;</a>
                 `;
                 container.appendChild(postElement);
             });
         }
 
-        /**
-         * Renders the list of recent posts in the sidebar.
-         */
+        function getTagIcon(tag) {
+            const icons = {
+                'coding': 'code',
+                'medicine': 'stethoscope',
+                'bioinformatics': 'dna'
+            };
+            return icons[tag] || 'terminal';
+        }
+
+        // Global functions for navigation
+        window.showPostsByTag = function(tag) {
+            renderPostsByTag(tag);
+            window.location.hash = `tag-${tag}`;
+        };
+
+        window.showAllPosts = function() {
+            renderPostsByTag();
+            window.location.hash = '';
+        };
+
+        window.showFullPost = function(postId) {
+            const post = allPosts.find(p => p.id === postId);
+            if (post) {
+                const container = document.getElementById('posts-container');
+                container.innerHTML = `
+                    <div class="full-post">
+                        <button onclick="showAllPosts()" class="back-button">
+                            <i class="fas fa-arrow-left"></i> Back to Posts
+                        </button>
+                        
+                        <article class="post full-post-content">
+                            <div class="post-meta">
+                                <span class="post-category ${post.category}">${post.category}</span>
+                                <span class="post-date">${post.date}</span>
+                            </div>
+                            <h1>${post.title}</h1>
+                            
+                            <div class="post-content" style="color: var(--text-primary); line-height: 1.6;">
+                                ${post.content.replace(/\n/g, '<br>').replace(/```(\w+)?\n([\s\S]*?)```/g, 
+                                    '<pre><code>$2</code></pre>')}
+                            </div>
+                            
+                            <div class="post-footer" style="margin-top: 30px; padding-top: 20px; 
+                                                          border-top: 1px solid var(--border-color);">
+                                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                    ${post.tags ? post.tags.map(tag => 
+                                        `<span style="background: var(--accent-cyan); color: #000; 
+                                                      padding: 3px 8px; border-radius: 3px; 
+                                                      font-family: 'Share Tech Mono', monospace; 
+                                                      font-size: 0.7rem;">#${tag}</span>`
+                                    ).join('') : ''}
+                                </div>
+                                
+                                ${post.id === 'plasmyrage' ? 
+                                    `<a href="https://gravityeffect1.github.io/plasmyrage/" target="_blank" 
+                                        style="background: var(--accent-green); color: #000; padding: 10px 20px; 
+                                               border-radius: 3px; text-decoration: none; 
+                                               font-family: 'Share Tech Mono', monospace; 
+                                               display: inline-block; margin-right: 10px;">
+                                        <i class="fas fa-external-link-alt"></i> View Live Demo
+                                     </a>` : ''
+                                }
+                                
+                                ${post.id === 'guide-finder' ? 
+                                    `<a href="https://guidefinder.streamlit.app/" target="_blank" 
+                                        style="background: var(--accent-green); color: #000; padding: 10px 20px; 
+                                               border-radius: 3px; text-decoration: none; 
+                                               font-family: 'Share Tech Mono', monospace; 
+                                               display: inline-block; margin-right: 10px;">
+                                        <i class="fas fa-external-link-alt"></i> Open Application
+                                     </a>` : ''
+                                }
+                            </div>
+                        </article>
+                    </div>
+                `;
+                window.location.hash = `post-${post.id}`;
+            }
+        };
+
         function renderRecentPostsWidget(posts) {
             const container = document.getElementById('recent-posts-widget');
-            container.innerHTML = posts.length > 0 
-                ? posts.map(p => `<a href="#!">${p.title}</a>`).join('')
-                : `<span class="empty-text">// Awaiting neural input...</span>`;
+            if (posts.length > 0) {
+                container.innerHTML = posts.map(p => 
+                    `<a href="javascript:void(0)" onclick="showFullPost('${p.id}')">${p.title}</a>`
+                ).join('');
+            } else {
+                container.innerHTML = '<div style="padding: 20px; text-align: center;"><div style="font-family: \'Share Tech Mono\', monospace; color: #666; font-style: italic; font-size: 0.85rem;">// No posts found</div><div style="font-family: \'Share Tech Mono\', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">Directory empty</div></div>';
+            }
         }
 
-        /**
-         * Renders the list of categories in the sidebar.
-         */
         function renderCategoriesWidget(posts) {
             const container = document.getElementById('categories-widget');
-            const categories = [...new Set(posts.map(p => p.category))]; // Get unique categories
-            container.innerHTML = categories.length > 0
-                ? categories.map(cat => `<a href="#!">${cat}</a>`).join('')
-                : `<span class="empty-text">// Tags will populate with content</span>`;
+            const categories = [...new Set(posts.map(p => p.category))];
+            if (categories.length > 0) {
+                container.innerHTML = categories.map(cat => 
+                    `<a href="javascript:void(0)" onclick="showPostsByTag('${cat}')">${cat}</a>`
+                ).join('');
+            } else {
+                container.innerHTML = '<div style="padding: 20px; text-align: center;"><div style="font-family: \'Share Tech Mono\', monospace; color: #666; font-style: italic; font-size: 0.85rem;">// No tags available</div><div style="font-family: \'Share Tech Mono\', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">Tags will populate with content</div></div>';
+            }
         }
 
-        // An example of a terminal typing effect you could use.
-        // It is not currently being called.
-        function typeWriter(element, text, speed = 50) {
-            let i = 0;
-            element.innerHTML = '';
+        // Image modal functions
+        function openImageModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            const caption = document.getElementById('caption');
             
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            caption.innerHTML = img.alt;
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPostsByTag();
+            renderRecentPostsWidget(allPosts);
+            renderCategoriesWidget(allPosts);
+            
+            // Handle hash navigation on page load
+            if (window.location.hash) {
+                const hash = window.location.hash.substr(1);
+                if (hash.startsWith('tag-')) {
+                    const tag = hash.replace('tag-', '');
+                    showPostsByTag(tag);
+                } else if (hash.startsWith('post-')) {
+                    const postId = hash.replace('post-', '');
+                    showFullPost(postId);
                 }
             }
-            type();
-        }
-
-        // Initialize animations when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- STEP 3: FETCH AND RENDER CONTENT -------------------------------------
-            // In a real application, you would replace `mockPosts` with a `fetch()` call to your CMS API.
-            // For example: fetch('https://your-cms.com/api/posts').then(res => res.json()).then(posts => { ... });
-            renderPosts(mockPosts);
-            renderRecentPostsWidget(mockPosts);
-            renderCategoriesWidget(mockPosts);
         });
     </script>
     <script src="paper.js"></script>
-    <div id="imageModal" style="display: none; 
-                           position: fixed; 
-                           z-index: 1000; 
-                           left: 0; 
-                           top: 0; 
-                           width: 100%; 
-                           height: 100%; 
-                           background: rgba(0, 0, 0, 0.9);" 
-     onclick="closeImageModal()">
-    <span style="position: absolute; 
-                 top: 15px; 
-                 right: 35px; 
-                 color: var(--accent-green); 
-                 font-size: 40px; 
-                 font-weight: bold; 
-                 cursor: pointer; 
-                 font-family: 'Share Tech Mono', monospace;"
-          onclick="closeImageModal()">&times;</span>
-    <img id="modalImg" style="margin: auto; 
-                             display: block; 
-                             width: 80%; 
-                             max-width: 700px; 
-                             margin-top: 5%; 
-                             border: 2px solid var(--accent-green);">
-    <div id="caption" style="margin: auto; 
-                            display: block; 
-                            width: 80%; 
-                            max-width: 700px; 
-                            text-align: center; 
-                            color: var(--accent-green); 
-                            padding: 10px 0; 
-                            font-family: 'Share Tech Mono', monospace;"></div>
-</div>
-
-<script>
-function openImageModal(img) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImg');
-    const caption = document.getElementById('caption');
-    
-    modal.style.display = 'block';
-    modalImg.src = img.src;
-    caption.innerHTML = img.alt;
-}
-
-function closeImageModal() {
-    document.getElementById('imageModal').style.display = 'none';
-}
-</script>
 </body>
 </html>
