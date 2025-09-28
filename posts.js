@@ -29,32 +29,6 @@ Partea tehnică a fost, paradoxal, mai puțin despre „a scrie cod" și mai mul
 
 În concluzie, Plasmyrage nu e doar un proiect, ci un exercițiu de răbdare, disciplină și (să recunoaștem) un strop de nebunie. Nu garantez că va schimba modul în care studenții privesc medicina sau învățarea. Dar garantez că m-a schimbat pe mine. Și cred că, în fond, asta e esența oricărui demers „tangibil": nu produsul final, ci omul care devii pe parcurs.`,
         tags: ['javascript', 'html', 'css', 'github', 'medical-education']
-    },
-    {
-        id: 'neuro-vessels',
-        title: 'Visualizing Cerebral Vasculature with D3.js',
-        category: 'bioinformatics',
-        date: '2025-01-20',
-        excerpt: 'An interactive visualization of the Circle of Willis, created with D3.js to explore the intricate network of arteries in the brain.',
-        content: 'The Circle of Willis is a fascinating and critical structure in human anatomy. This project aims to make it more understandable through interactive visualization...',
-        tags: ['d3.js', 'javascript', 'svg', 'anatomy', 'neuroscience']
-    },
-    {
-        id: 'genomic-data-pipeline',
-        title: 'Building a Genomic Data Analysis Pipeline',
-        category: 'bioinformatics',
-        date: '2025-02-10',
-        excerpt: 'A walkthrough of creating a pipeline for processing raw sequencing data using Nextflow and Docker.',
-        content: 'Genomic data is massive. Processing it efficiently requires robust and reproducible pipelines. Here, I document my journey of building one with Nextflow...',
-        tags: ['nextflow', 'docker', 'bioinformatics', 'genomics', 'pipeline']
-    },
-    {
-        id: 'clinical-case-sim',
-        title: 'Interactive Clinical Case Simulator',
-        category: 'medicine',
-        date: '2025-03-05',
-        excerpt: 'A web-based application to simulate patient encounters and practice clinical reasoning skills.',
-        content: 'Practice makes perfect, especially in medicine. This simulator allows students to walk through clinical cases, make decisions, and see the outcomes...',
-        tags: ['javascript', 'react', 'medical-education', 'clinical-reasoning']
     }
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
