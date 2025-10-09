@@ -6,32 +6,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    body { background:#111; color:#eee; font-family:sans-serif; }
-    .container { max-width:1000px; margin:0 auto; padding:20px; }
-    header { border-bottom:2px solid #00eeff; margin-bottom:20px; }
-    .logo { font-size:2em; color:#00eeff; text-decoration:none; font-weight:bold; }
-    nav ul { list-style:none; padding:0; display:flex; gap:20px; }
-    nav a { color:#eee; text-decoration:none; }
-    main { display:flex; gap:30px; }
-    .content-area { flex:2; }
-    .sidebar { flex:1; }
-    .widget { background:#222; border:1px solid #333; border-radius:5px; margin-bottom:20px; }
-    .widget-header { background:#333; padding:10px;}
-    .widget-title { color:#00eeff; font-size:1em; }
-    .recent-posts a { display:block; color:#b0b0b0; text-decoration:none; padding:8px 0; border-bottom:1px solid #333;}
-    .recent-posts a:last-child { border-bottom:none; }
-    .recent-posts a:hover { color:#00eeff; }
-    .blog-posts h2 { color:#19fbec; margin-bottom:15px;}
-    .post { background:#222; margin-bottom:20px; border-radius:5px; padding:15px; }
-    .post-meta { font-size:0.9em; color:#b0b0b0; margin-bottom:5px;}
-    .post-category { background: #00eeff; color: #222; padding: 2px 8px; border-radius: 3px; font-size:0.8em;}
-    .post-date { margin-left:10px; }
-    .post h3 { margin:10px 0; }
-    .post-excerpt { color:#bbb;}
-    .read-more { color:#19fbec; text-decoration:none; font-size:0.95em; }
-    .read-more:hover { color:#00eeff;}
-    .full-post-content { background:#222; border-radius:5px; padding:20px;}
-    .back-button { margin-bottom:20px;}
+    body {
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px;}
+    header {
+      background: #1a1a1a;
+      border-bottom: 2px solid #00eeff;
+      padding: 20px 0;
+      margin-bottom: 0;
+    }
+    .logo {
+      font-family: 'Orbitron', monospace;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #00eeff;
+      text-shadow: 0 0 10px #00eeff;
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-family: 'Share Tech Mono', monospace;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+    }
+    nav a:hover {
+      color: #18a4f4;
+      text-shadow: 0 0 5px #18a4f4;
+    }
+    main { display: flex; gap: 40px; padding: 40px 0; }
+    .content-area { flex: 2; }
+    .sidebar { flex: 1; display: flex; flex-direction: column; gap: 30px;}
+    .widget { background: #1a1a1a; border: 1px solid #333; border-radius: 5px; margin-bottom: 0; }
+    .widget-header { background: #2a2a2a; padding: 15px; border-bottom: 1px solid #333; }
+    .widget-title { font-family: 'Orbitron', monospace; color: #00eeff; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+    .widget-content { padding: 20px; }
+    .recent-posts a { display: block; color: #b0b0b0; text-decoration: none; padding: 8px 0; border-bottom: 1px solid #333; transition: color 0.3s ease; font-size: 0.9rem; cursor: pointer;}
+    .recent-posts a:last-child { border-bottom: none;}
+    .recent-posts a:hover { color: #18a4f4;}
+    .blog-posts h2 { font-family: 'Orbitron', monospace; color: #19fbec; margin-bottom: 20px; padding: 15px; background: #2a2a2a; border-left: 4px solid #19fbec; text-transform: uppercase; letter-spacing: 2px;}
+    .post { border-bottom: 1px solid #333; padding: 25px; transition: background 0.3s ease;}
+    .post:hover { background: #2a2a2a;}
+    .post:last-child { border-bottom: none;}
+    .post-meta { font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; color: #b0b0b0; margin-bottom: 10px;}
+    .post-category { background: #00eeff; color: #000; padding: 2px 8px; border-radius: 3px; font-weight: bold; margin-right: 10px;}
+    .post-category.coding { background: #00eeff; color: #000; }
+    .post h3 { font-family: 'Orbitron', monospace; color: #e0e0e0; margin-bottom: 15px; font-size: 1.3rem;}
+    .post h3 a { color: inherit; text-decoration: none; transition: color 0.3s ease;}
+    .post h3 a:hover { color: #00eeff;}
+    .post-excerpt { color: #b0b0b0; margin-bottom: 15px;}
+    .read-more { color: #18a4f4; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; transition: all 0.3s ease;}
+    .read-more:hover { color: #00eeff; text-shadow: 0 0 5px #00eeff;}
+    .full-post-content { padding: 30px; line-height: 1.7;}
+    .full-post-content h1 { font-family: 'Orbitron', monospace; color: #00eeff; margin-bottom: 20px; font-size: 1.8rem;}
+    .full-post-content a { color: #18a4f4; text-decoration: none; transition: all 0.3s ease;}
+    .full-post-content a:hover { color: #00eeff; text-shadow: 0 0 5px #00eeff;}
+    .back-button { background: transparent; border: 1px solid #00eeff; color: #00eeff; font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; padding: 8px 12px; border-radius: 3px; cursor: pointer; margin-bottom: 20px; transition: all 0.3s ease;}
+    .back-button:hover { background: #00eeff; color: #000;}
+    @media (max-width: 900px) {
+      main { flex-direction: column; }
+      .sidebar { flex-direction: row; gap: 15px; }
+      .content-area, .sidebar { width: 100%; flex: none; }
+    }
   </style>
 </head>
 <body>
@@ -103,7 +156,7 @@
             </button>
             <article class="post full-post-content">
               <div class="post-meta">
-                <span class="post-category">${post.category}</span>
+                <span class="post-category coding">${post.category}</span>
                 <span class="post-date">${post.date}</span>
               </div>
               <h1>${post.title}</h1>
@@ -134,7 +187,7 @@
         const postElement = document.createElement('article');
         postElement.className = 'post';
         postElement.innerHTML = `
-          <div class="post-meta"><span class="post-category">${post.category}</span> <span class="post-date">${post.date}</span></div>
+          <div class="post-meta"><span class="post-category coding">${post.category}</span> <span class="post-date">${post.date}</span></div>
           <h3><a href="javascript:void(0)" onclick="showFullPost('${post.id}')">${post.title}</a></h3>
           <p class="post-excerpt">${post.excerpt}</p>
           <a href="javascript:void(0)" class="read-more" onclick="showFullPost('${post.id}')">Read Transmission &gt;</a>
