@@ -533,28 +533,6 @@
                         <!-- Paper content will be loaded here -->
                     </div>
                 </div>
-
-                <div id="bioinformatics" class="widget">
-                    <div class="widget-header">
-                        <h2 class="widget-title"><i class="fas fa-history"></i> RECENT_POSTS</h2>
-                    </div>
-                    <div class="widget-content">
-                        <div id="recent-posts-widget" class="recent-posts">
-                            <!-- Recent posts list will be dynamically inserted here -->
-                        </div>
-                    </div>
-                </div>
-
-                <div id="medicine" class="widget">
-                    <div class="widget-header">
-                        <h2 class="widget-title"><i class="fas fa-tags"></i> TAGS</h2>
-                    </div>
-                    <div class="widget-content">
-                        <div id="categories-widget" class="recent-posts">
-                            <!-- Category list will be dynamically inserted here -->
-                        </div>
-                    </div>
-                </div>
             </aside>
         </main>
 
@@ -765,33 +743,6 @@
             }
         };
 
-        function renderRecentPostsWidget(posts) {
-            const container = document.getElementById('recent-posts-widget');
-            // Take the 5 most recent posts
-            const recentPosts = posts.slice(0, 5);
-            if (recentPosts.length > 0) {
-                container.innerHTML = recentPosts.map(p => 
-                    `<a href="javascript:void(0)" onclick="showFullPost('${p.id}')">${p.title}</a>`
-                ).join('');
-            }
-            else {
-                container.innerHTML = '<div style="padding: 20px; text-align: center;"><div style="font-family: \'Share Tech Mono\', monospace; color: #666; font-style: italic; font-size: 0.85rem;">// No posts found</div><div style="font-family: \'Share Tech Mono\', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">Directory empty</div></div>';
-            }
-        }
-
-        function renderTagsWidget(posts) {
-            const container = document.getElementById('categories-widget');
-            const allTags = posts.flatMap(p => p.tags || []);
-            const uniqueTags = [...new Set(allTags)];
-            
-            if (uniqueTags.length > 0) {
-                container.innerHTML = uniqueTags.map(tag => 
-                    `<a href="javascript:void(0)" onclick="showPostsByTag('${tag}')">#${tag}</a>`
-                ).join('');
-            } else {
-                container.innerHTML = '<div style="padding: 20px; text-align: center;"><div style="font-family: \'Share Tech Mono\', monospace; color: #666; font-style: italic; font-size: 0.85rem;">// No tags available</div><div style="font-family: \'Share Tech Mono\', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">Tags will populate with content</div></div>';
-            }
-        }
 
         // Image modal functions
         function openImageModal(img) {
