@@ -386,11 +386,11 @@ function closeModal() {
     console.log('📊 Categories available:', [...new Set(curatedPapers.map(p => p.category))]);
 });
 
-// Function to add placeholder content to sidebar widgets
+// Function to add placeholder content to sidebar widgets only if empty
 function initializeSidebarPlaceholders() {
-    // Recent Posts placeholder - simple grey text
+    // Recent Posts placeholder - only if no posts rendered
     const recentPostsWidget = document.getElementById('recent-posts-widget');
-    if (recentPostsWidget) {
+    if (recentPostsWidget && recentPostsWidget.innerHTML.trim() === '') {
         recentPostsWidget.innerHTML = `
             <div style="padding: 20px; text-align: center;">
                 <div style="font-family: 'Share Tech Mono', monospace; color: #666; font-style: italic; font-size: 0.85rem;">
@@ -403,9 +403,9 @@ function initializeSidebarPlaceholders() {
         `;
     }
     
-    // Tags/Categories placeholder - simple grey text
+    // Tags/Categories placeholder - only if empty
     const categoriesWidget = document.getElementById('categories-widget');
-    if (categoriesWidget) {
+    if (categoriesWidget && categoriesWidget.innerHTML.trim() === '') {
         categoriesWidget.innerHTML = `
             <div style="padding: 20px; text-align: center;">
                 <div style="font-family: 'Share Tech Mono', monospace; color: #666; font-style: italic; font-size: 0.85rem;">
@@ -418,4 +418,3 @@ function initializeSidebarPlaceholders() {
         `;
     }
 }
-
