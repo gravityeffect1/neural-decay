@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("Starting paper system with REAL verified papers and links");
     
-    // REAL papers with VERIFIED matching titles and working URLs from bioRxiv/medRxiv
     const curatedPapers = [
         {
             title: "Design of highly functional genome editors by modeling the universe of CRISPR-Cas sequences",
@@ -210,14 +209,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const readMoreLink = document.getElementById('read-more-link');
         if (paperLink) {
             paperLink.addEventListener('click', function(e) {
-                console.log('🔗 Paper title clicked - Opening:', paper.title);
-                console.log('📋 URL:', paper.url);
+                console.log(' Paper title clicked - Opening:', paper.title);
+                console.log(' URL:', paper.url);
             });
         }
         if (readMoreLink) {
             readMoreLink.addEventListener('click', function(e) {
-                console.log('🔗 Read more clicked - Opening:', paper.title);
-                console.log('📋 URL:', paper.url);
+                console.log(' Read more clicked - Opening:', paper.title);
+                console.log(' URL:', paper.url);
             });
         }
     }
