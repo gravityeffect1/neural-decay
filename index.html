@@ -38,7 +38,6 @@
             overflow-x: hidden;
         }
         
-        /* Terminal/Matrix background effect */
         body::before {
             content: '';
             position: fixed;
@@ -66,7 +65,6 @@
             padding: 0 20px;
         }
         
-        /* Header */
         header {
             background: var(--bg-secondary);
             border-bottom: 2px solid var(--accent-green);
@@ -137,7 +135,6 @@
             width: 100%;
         }
         
-        /* Main Content */
         main {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -152,7 +149,6 @@
             overflow: hidden;
         }
         
-        /* Welcome Terminal */
         .terminal-welcome {
             background: #000;
             border: 1px solid var(--accent-green);
@@ -189,7 +185,6 @@
             margin-bottom: 10px;
         }
         
-        /* Blog Posts */
         .blog-posts h2 {
             font-family: 'Orbitron', monospace;
             color: var(--accent-red);
@@ -270,7 +265,6 @@
             text-shadow: 0 0 5px var(--accent-green);
         }
         
-        /* Full Post Styles */
         .full-post-content {
             padding: 30px;
             line-height: 1.7;
@@ -317,7 +311,6 @@
             color: #000;
         }
         
-        /* Sidebar */
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -368,7 +361,6 @@
             border-bottom: none;
         }
         
-        /* Empty state styles */
         .no-posts {
             padding: 20px;
         }
@@ -380,21 +372,6 @@
             overflow: hidden;
         }
         
-        .empty-state {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            font-style: italic;
-        }
-        
-        .empty-text {
-            color: #666;
-        }
-        
-        /* Footer */
         footer {
             background: var(--bg-secondary);
             border-top: 2px solid var(--accent-green);
@@ -424,7 +401,6 @@
             text-shadow: 0 0 10px var(--accent-green);
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             main {
                 grid-template-columns: 1fr;
@@ -446,7 +422,6 @@
             }
         }
         
-        /* Glitch animation */
         @keyframes glitch {
             0% { transform: translate(0); }
             20% { transform: translate(-2px, 2px); }
@@ -485,7 +460,7 @@
     <div class="container">
         <main>
             <div class="content-area">
-                <div id="about" class="terminal-welcome">
+                <div id="welcome" class="terminal-welcome">
                     <div class="terminal-header">
                         user@neural_decay:~$ ./welcome.sh
                     </div>
@@ -504,18 +479,6 @@
                     </div>
                 </div>
 
-                <div id="about-section" class="terminal-welcome">
-                    <div class="terminal-header">
-                        user@neural_decay:~$ ./readme.sh
-                    </div>
-                    <div class="terminal-body">
-                        <div class="output">
-                            <span class="prompt">root@system:~#</span> <span class="command">sociopathic_tendencies/ego_too_big/profile.d/sara.sh</span><br>
-                            <span class="output"> Medical student passionate about bridging science, humanity, and innovation. Currently training and studying in my 2nd year of university at UMFCD, Bucharest to become a physician with a deep interest in research, coding and clinical medicin</span><br>
-                        </div>
-                    </div>
-                </div>
-
                 <div id="coding" class="blog-posts">
                     <h2><i class="fas fa-terminal"></i> Recent_Transmissions</h2>
                     <div id="posts-container">
@@ -523,34 +486,35 @@
                     </div>
                 </div>
             </div>
+
             <aside class="sidebar">
                 <div class="widget">
                     <div class="widget-header">
                         <h2 class="widget-title"><i class="fas fa-book-open"></i> PAPER_OF_THE_DAY</h2>
                     </div>
                     <div class="widget-content" id="paper-of-the-day">
-                        <!-- Paper content will be loaded here -->
+                        Loading...
                     </div>
                 </div>
 
-                <div id="bioinformatics" class="widget">
+                <div class="widget">
                     <div class="widget-header">
                         <h2 class="widget-title"><i class="fas fa-history"></i> RECENT_POSTS</h2>
                     </div>
                     <div class="widget-content">
                         <div id="recent-posts-widget" class="recent-posts">
-                            <!-- Recent posts list will be dynamically inserted here -->
+                            Loading...
                         </div>
                     </div>
                 </div>
 
-                <div id="medicine" class="widget">
+                <div class="widget">
                     <div class="widget-header">
                         <h2 class="widget-title"><i class="fas fa-tags"></i> TAGS</h2>
                     </div>
                     <div class="widget-content">
                         <div id="categories-widget" class="recent-posts">
-                            <!-- Category list will be dynamically inserted here -->
+                            Loading...
                         </div>
                     </div>
                 </div>
@@ -593,30 +557,29 @@
         </div>
     </div>
 
-  <footer id="contact">
-    <div class="container">
-        <div class="footer-content">
-            <p>&copy; 2025 NEURAL_DECAY - The Multidisciplinary Dome of the Future and Beyond</p>
-            <p>Powered by irish cream latte, curiosity, and countless google searches</p>
-            <div class="social-links">
-                <a href="https://github.com/gravityeffect1" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                <a href="https://x.com/gravityeffect1?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/sara-mihaela-sova?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:saramihaela2005@gmail.com"><i class="fas fa-envelope"></i></a>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 NEURAL_DECAY - The Multidisciplinary Dome of the Future and Beyond</p>
+                <p>Powered by irish cream latte, curiosity, and countless google searches</p>
+                <div class="social-links">
+                    <a href="https://github.com/gravityeffect1" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/gravityeffect1?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/sara-mihaela-sova?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:saramihaela2005@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-    <!-- Image Modal -->
+    </footer>
+
     <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9);" onclick="closeImageModal()">
         <span style="position: absolute; top: 15px; right: 35px; color: var(--accent-green); font-size: 40px; font-weight: bold; cursor: pointer; font-family: 'Share Tech Mono', monospace;" onclick="closeImageModal()">&times;</span>
         <img id="modalImg" style="margin: auto; display: block; width: 80%; max-width: 700px; margin-top: 5%; border: 2px solid var(--accent-green);">
         <div id="caption" style="margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: var(--accent-green); padding: 10px 0; font-family: 'Share Tech Mono', monospace;"></div>
     </div>
 
-    
-<script>
-// Define posts directly in HTML
+    <script>
+// POSTS DATA - All in one place
 const allPosts = [
     {
         id: 'plasmyrage',
@@ -624,78 +587,29 @@ const allPosts = [
         category: 'coding',
         date: '2024-12-15',
         excerpt: 'Un proiect personal care a început din dorința de a crea ceva tangibil cu propriile mâini. Learning tools made by students for students.',
-        content: `O Oda închinată sângelui? Plasmyrage a pornit din dorința oricărui student la medicină, care încă din prima zi se visează „mare medic", de a face ceva TANGIBIL cu propriile mâini. 
-Medicina, în esență, reprezintă dedicare și ambiție. Dedicare, evident, pentru a continua drumul deja început încă de la meditațiile din liceu pentru admitere, pentru menținerea acelui mindset de „best of the best". Iar ambiția? Ei bine, de obicei se rezumă la ambiția notelor, a burselor și la dorința de a-ți zdrobi competiția. Nimic greșit cu acest spirit de gladiator academic, desigur. 
-Dar la mine ambiția nu a avut niciodată vreo legătură intimă cu educația formală. Tot ce am făcut până acum a fost o necesitate — ar fi fost „incomod" să nu reușesc în ceea ce îmi propun. Dar altceva mă rodea pe dinăuntru: extracurricularele, lucrurile „în plus" pe care aș fi putut să le creez cu adevărat. 
-Cluburi? Nu aveam destulă personalitate pentru ele. Olimpiade? Da, poate, dar doar ca să alung plictiseala care mă lovea atunci când CHIAR trebuia să muncesc pentru rezultate (OLAV nu iartă haterii *Ana Karenina*). Proiecte personale, însă, 100% sub controlul meu, fără reguli stricte? Oh, da. 
-Așa s-a născut ideea: learning tools made by students for students. Se poate? Short answer: da, cu încăpățânare, GitHub și Gemini care te privește ironic de fiecare dată când codul refuză să ruleze. 
-Consider că oricine poate învăța să codeze. Însă de la a „coda" până la a „programa" e o distanță mare, străbătută de elemente de analiză, algebră, matematică pură, guys. Nu e imposibil. Dar ce e cu adevărat dificil? Brainstorming-ul și, implicit, structurarea proiectului. Poți avea cea mai spectaculoasă idee, dacă nu știi CE să faci cu ea, tot în sertar rămâne. 
-Plasmyrage a fost conceput ca un *baby-project*, în sensul că nu mi-aș fi imaginat vreodată să îl realizez atât de repede și nici să îmi depășească așteptările privind funcționalitatea. Era un test drive, iar eu nu aveam nici măcar carnet de condus. 
-Ce m-a motivat să continui până la forma actuală, pe care o puteți găsi aici? Ambiția. Dar nu ambiția hrănită de aplauze și recunoaștere, ci ambiția de a-mi dovedi mie că pot. Că nimic nu e imposibil cu suficientă încăpățânare (și, indirect, cu influența unui cadru didactic pasionat de domeniul hematologiei). 
-Din punct de vedere tehnic, Plasmyrage s-a construit pe câteva piloni simpli dar deloc banali: HTML și CSS pentru partea vizuală minimalistă, JavaScript pentru interactivitate, și, inevitabil, repo-ul de pe GitHub care a fost atât teren de joacă, cât și câmp de bătălie. 
-Am jonglat cu structuri de date și logica aplicației până să prindă contur ceva care să nu pară doar o machetă, ci un instrument funcțional. Nu am folosit framework-uri sofisticate — intenționat. A fost mai mult despre a înțelege „scheletul" din spatele aplicației, decât despre a masca imperfecțiunile cu unelte avansate. 
-Partea tehnică a fost, paradoxal, mai puțin despre „a scrie cod" și mai mult despre a învăța să îți păstrezi calmul când ceva aparent banal refuză să funcționeze. 
-În concluzie, Plasmyrage nu e doar un proiect, ci un exercițiu de răbdare, disciplină și (să recunoaștem) un strop de nebunie. Nu garantez că va schimba modul în care studenții privesc medicina sau învățarea. Dar garantez că m-a schimbat pe mine. Și cred că, în fond, asta e esența oricărui demers „tangibil": nu produsul final, ci omul care devii pe parcurs.`,
+        content: `O Oda închinată sângelui? Plasmyrage a pornit din dorința oricărui student la medicină, care încă din prima zi se visează „mare medic", de a face ceva TANGIBIL cu propriile mâini. Medicina, în esență, reprezintă dedicare și ambiție.`,
         tags: ['coding', 'javascript', 'html', 'css', 'github', 'medical-education']
     }
 ];
 
-// All the JavaScript functions
-let currentView = 'all';
-let currentTag = null;
+console.log('✅ Posts loaded:', allPosts.length);
 
+// FUNCTIONS
 function renderPostsByTag(tag = null) {
+    console.log('Rendering posts, tag:', tag);
     const container = document.getElementById('posts-container');
-    container.innerHTML = '';
-    
-    let postsToShow = allPosts;
-    
-    if (tag) {
-        postsToShow = allPosts.filter(post => post.tags.includes(tag));
-        currentView = 'tag';
-        currentTag = tag;
-        
-        const tagHeader = document.createElement('div');
-        tagHeader.innerHTML = `
-            <div style="background: var(--bg-accent); border: 1px solid var(--accent-cyan); 
-                       border-radius: 5px; padding: 15px; margin-bottom: 20px;">
-                <h3 style="font-family: 'Orbitron', monospace; color: var(--accent-cyan); 
-                          margin: 0; text-transform: uppercase; letter-spacing: 1px;">
-                    <i class="fas fa-tag"></i> TAG: #${tag}
-                </h3>
-                <p style="font-family: 'Share Tech Mono', monospace; color: var(--text-secondary); 
-                          font-size: 0.8rem; margin: 5px 0 0 0;">
-                    // Showing ${postsToShow.length} post${postsToShow.length === 1 ? '' : 's'} with this tag
-                </p>
-                <button onclick="showAllPosts()" 
-                        style="background: transparent; border: 1px solid var(--accent-cyan); 
-                               color: var(--accent-cyan); font-family: 'Share Tech Mono', monospace; 
-                               font-size: 0.7rem; padding: 4px 8px; border-radius: 3px; cursor: pointer; 
-                               margin-top: 10px; transition: all 0.3s ease;"
-                        onmouseover="this.style.background='var(--accent-cyan)'; this.style.color='#000'"
-                        onmouseout="this.style.background='transparent'; this.style.color='var(--accent-cyan)'">
-                    <i class="fas fa-arrow-left"></i> BACK TO ALL POSTS
-                </button>
-            </div>
-        `;
-        container.appendChild(tagHeader);
-    } else {
-        currentView = 'all';
-        currentTag = null;
+    if (!container) {
+        console.error('❌ Container not found!');
+        return;
     }
     
+    container.innerHTML = '';
+    let postsToShow = tag ? allPosts.filter(post => post.tags.includes(tag)) : allPosts;
+    
+    console.log('Posts to show:', postsToShow.length);
+    
     if (postsToShow.length === 0) {
-        container.innerHTML += `
-            <div class="no-posts">
-                <div class="terminal-empty">
-                    <div class="terminal-header">user@neural_decay:~$ find . -type f -name "*${tag}*"</div>
-                    <div class="terminal-body">
-                        <span class="prompt">root@system:~#</span> <span class="command">ls -la</span><br>
-                        <span class="output">// No posts found for this tag</span><br>
-                        <span class="output">// Status: [AWAITING_CONTENT]</span>
-                    </div>
-                </div>
-            </div>`;
+        container.innerHTML = '<div class="no-posts"><p style="color: #666; padding: 20px;">No posts yet...</p></div>';
         return;
     }
     
@@ -715,125 +629,79 @@ function renderPostsByTag(tag = null) {
     });
 }
 
+function renderRecentPostsWidget() {
+    console.log('Rendering recent posts widget');
+    const container = document.getElementById('recent-posts-widget');
+    if (!container) return;
+    
+    container.innerHTML = allPosts.map(p => 
+        `<a href="javascript:void(0)" onclick="showFullPost('${p.id}')">${p.title}</a>`
+    ).join('');
+}
+
+function renderTagsWidget() {
+    console.log('Rendering tags widget');
+    const container = document.getElementById('categories-widget');
+    if (!container) return;
+    
+    const allTags = allPosts.flatMap(p => p.tags || []);
+    const uniqueTags = [...new Set(allTags)];
+    
+    container.innerHTML = uniqueTags.map(tag => 
+        `<a href="javascript:void(0)" onclick="showPostsByTag('${tag}')">#${tag}</a>`
+    ).join('');
+}
+
 window.showPostsByTag = function(tag) {
     renderPostsByTag(tag);
-    window.location.hash = `tag-${tag}`;
 };
 
 window.showAllPosts = function() {
     renderPostsByTag();
-    window.location.hash = '';
 };
 
 window.showFullPost = function(postId) {
     const post = allPosts.find(p => p.id === postId);
-    if (post) {
-        const container = document.getElementById('posts-container');
-        container.innerHTML = `
-            <div class="full-post">
-                <button onclick="showAllPosts()" class="back-button">
-                    <i class="fas fa-arrow-left"></i> Back to Posts
-                </button>
-                
-                <article class="post full-post-content">
-                    <div class="post-meta">
-                        <span class="post-category ${post.category}">${post.category}</span>
-                        <span class="post-date">${post.date}</span>
-                    </div>
-                    <h1>${post.title}</h1>
-                    
-                    <div class="post-content" style="color: var(--text-primary); line-height: 1.7;">
-                        ${post.content.split('\n\n').map(paragraph => 
-                            `<p>${paragraph.trim().replace(/\n/g, '<br>')}</p>`
-                        ).join('')}
-                    </div>
-                    
-                    <div class="post-footer" style="margin-top: 30px; padding-top: 20px; 
-                                                  border-top: 1px solid var(--border-color);">
-                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
-                            ${post.tags ? post.tags.map(tag => 
-                                `<a href="javascript:void(0)" onclick="showPostsByTag('${tag}')" style="background: var(--accent-cyan); color: #000; 
-                                              padding: 3px 8px; border-radius: 3px; 
-                                              font-family: 'Share Tech Mono', monospace; 
-                                              font-size: 0.7rem; text-decoration: none;">#${tag}</a>`
-                            ).join('') : ''}
-                        </div>
-                        
-                        ${post.id === 'plasmyrage' ? `
-                        <a href="https://gravityeffect1.github.io/plasmyrage/" target="_blank" 
-                           style="background: var(--accent-green); color: #000; padding: 10px 20px; 
-                                  border-radius: 3px; text-decoration: none; 
-                                  font-family: 'Share Tech Mono', monospace; 
-                                  display: inline-block; margin-right: 10px;">
-                            <i class="fas fa-external-link-alt"></i> View Live Demo
-                        </a>` : ''}
-                    </div>
-                </article>
-            </div>
-        `;
-        window.location.hash = `post-${post.id}`;
-    }
+    if (!post) return;
+    
+    const container = document.getElementById('posts-container');
+    container.innerHTML = `
+        <div class="full-post">
+            <button onclick="showAllPosts()" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Posts
+            </button>
+            <article class="post full-post-content">
+                <div class="post-meta">
+                    <span class="post-category ${post.category}">${post.category}</span>
+                    <span class="post-date">${post.date}</span>
+                </div>
+                <h1>${post.title}</h1>
+                <div class="post-content">
+                    <p>${post.content}</p>
+                </div>
+            </article>
+        </div>
+    `;
 };
 
-function renderRecentPostsWidget(posts) {
-    const container = document.getElementById('recent-posts-widget');
-    const recentPosts = posts.slice(0, 5);
-    if (recentPosts.length > 0) {
-        container.innerHTML = recentPosts.map(p => 
-            `<a href="javascript:void(0)" onclick="showFullPost('${p.id}')">${p.title}</a>`
-        ).join('');
-    } else {
-        container.innerHTML = '<div style="padding: 20px; text-align: center;"><div style="font-family: \'Share Tech Mono\', monospace; color: #666; font-style: italic; font-size: 0.85rem;">// No posts found</div></div>';
-    }
-}
-
-function renderTagsWidget(posts) {
-    const container = document.getElementById('categories-widget');
-    const allTags = posts.flatMap(p => p.tags || []);
-    const uniqueTags = [...new Set(allTags)];
-    
-    if (uniqueTags.length > 0) {
-        container.innerHTML = uniqueTags.map(tag => 
-            `<a href="javascript:void(0)" onclick="showPostsByTag('${tag}')">#${tag}</a>`
-        ).join('');
-    } else {
-        container.innerHTML = '<div style="padding: 20px; text-align: center;"><div style="font-family: \'Share Tech Mono\', monospace; color: #666; font-style: italic; font-size: 0.85rem;">// No tags available</div></div>';
-    }
-}
-
 function openImageModal(img) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImg');
-    const caption = document.getElementById('caption');
-    
-    modal.style.display = 'block';
-    modalImg.src = img.src;
-    caption.innerHTML = img.alt;
+    document.getElementById('imageModal').style.display = 'block';
+    document.getElementById('modalImg').src = img.src;
+    document.getElementById('caption').innerHTML = img.alt;
 }
 
 function closeImageModal() {
     document.getElementById('imageModal').style.display = 'none';
 }
 
-// Initialize on page load
+// INITIALIZE
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initializing blog with', allPosts.length, 'posts');
+    console.log('🚀 DOM Content Loaded - Initializing...');
     renderPostsByTag();
-    renderRecentPostsWidget(allPosts);
-    renderTagsWidget(allPosts);
-    
-    if (window.location.hash) {
-        const hash = window.location.hash.substr(1);
-        if (hash.startsWith('tag-')) {
-            const tag = hash.replace('tag-', '');
-            showPostsByTag(tag);
-        } else if (hash.startsWith('post-')) {
-            const postId = hash.replace('post-', '');
-            showFullPost(postId);
-        }
-    }
+    renderRecentPostsWidget();
+    renderTagsWidget();
+    console.log('✅ Initialization complete!');
 });
-</script>
-<script src="paper.js"></script>
+    </script>
 </body>
 </html>
