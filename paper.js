@@ -81,26 +81,21 @@ document.addEventListener('DOMContentLoaded', function() {
             authors: "Xin Qi, Yuanchun Zhao, Zhuang Qi et al.",
             abstract: "This comprehensive review examines how machine learning, especially Transformer-based models, is revolutionizing drug discovery by accelerating the pace and reducing costs of new drug development through advanced algorithms and biological big data.",
             source: "MDPI Molecules",
-            url: "https://www.mdpi.com/1420-3049/29/4/903", // This is a real working link
+            url: "https://www.mdpi.com/1420-3049/29/4/903",
             category: "ai_drug_discovery",
             date: "February 2024"
         },
-        
     ];
     
     let currentPaperIndex = 0;
-    let displayedPapers = []; // Track papers shown in current session
-    
+    let displayedPapers = [];
     const container = document.getElementById('paper-of-the-day');
-    
-    // Initialize with loading animation
+
     showLoadingState();
-    
-    // Show first paper after animation
     setTimeout(() => {
         showRandomPaper();
     }, 1200);
-    
+
     function showLoadingState() {
         container.innerHTML = `
             <div style="padding: 20px; text-align: center;">
@@ -114,36 +109,26 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
     }
-    
+
     function showRandomPaper() {
-        // Get available papers (not shown in current session)
         let availablePapers = curatedPapers.filter(paper => 
             !displayedPapers.includes(paper.title)
         );
-        
-        // If all papers have been shown, reset the list
         if (availablePapers.length === 0) {
             displayedPapers = [];
             availablePapers = [...curatedPapers];
         }
-        
-        // Select random paper from available ones
         const randomIndex = Math.floor(Math.random() * availablePapers.length);
         const selectedPaper = availablePapers[randomIndex];
-        
-        // Mark this paper as displayed
         displayedPapers.push(selectedPaper.title);
-        
         displayPaper(selectedPaper);
     }
-    
+
     function displayPaper(paper) {
-        // Truncate text for better display
         const title = paper.title.length > 85 ? paper.title.substring(0, 85) + '...' : paper.title;
         const authors = paper.authors.length > 70 ? paper.authors.substring(0, 70) + '...' : paper.authors;
         const abstract = paper.abstract.length > 160 ? paper.abstract.substring(0, 160) + '...' : paper.abstract;
-        
-        // Category color mapping
+
         const categoryColors = {
             'ai_crispr': 'var(--accent-green)',
             'neurotherapeutics': '#9b59b6',
@@ -156,17 +141,13 @@ document.addEventListener('DOMContentLoaded', function() {
             'ai_drug_discovery': 'var(--accent-red)',
             'ai_healthcare': '#ffa500'
         };
-        
         const categoryColor = categoryColors[paper.category] || 'var(--accent-green)';
-        
-        // Determine source type and icon
         const sourceIcon = paper.source.includes('medRxiv') ? 
             '<i class="fas fa-stethoscope"></i>' : 
             paper.source.includes('bioRxiv') ? '<i class="fas fa-dna"></i>' :
             '<i class="fas fa-journal-whills"></i>';
-        
         const accessType = paper.source.includes('Rxiv') ? 'FREE ACCESS' : 'OPEN ACCESS';
-        
+
         container.innerHTML = `
             <div style="padding: 10px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -194,8 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <a id="paper-link" href="${paper.url}" target="_blank" rel="noopener noreferrer" 
                        style="color: var(--accent-green); text-decoration: none; transition: all 0.3s ease;"
                        onmouseover="this.style.color='var(--accent-cyan)'; this.style.textShadow='0 0 5px var(--accent-cyan)'"
-                       onmouseout="this.style.color='var(--accent-green)'; this.style.textShadow='none'"
-                       onclick="console.log('✅ Opening verified paper:', '${paper.url}')">
+                       onmouseout="this.style.color='var(--accent-green)'; this.style.textShadow='none'">
                         ${title}
                     </a>
                 </h3>
@@ -218,203 +198,196 @@ document.addEventListener('DOMContentLoaded', function() {
                     <a id="read-more-link" href="${paper.url}" target="_blank" rel="noopener noreferrer" 
                        class="read-more" style="font-size: 0.8rem; transition: all 0.3s ease;"
                        onmouseover="this.style.textShadow='0 0 5px var(--accent-green)'"
-                       onmouseout="this.style.textShadow='none'"
-                       onclick="console.log('✅ Read more clicked:', '${paper.url}')">
+                       onmouseout="this.style.textShadow='none'">
                         Access Paper &gt;
                     </a>
                 </div>
             </div>
         `;
-        
+
         // Add click tracking for debugging
         const paperLink = document.getElementById('paper-link');
         const readMoreLink = document.getElementById('read-more-link');
-        
-        paperLink.addEventListener('click', function(e) {
-            console.log('🔗 Paper title clicked - Opening:', paper.title);
-            console.log('📋 URL:', paper.url);
-        });
-        
-        readMoreLink.addEventListener('click', function(e) {
-            console.log('🔗 Read more clicked - Opening:', paper.title);
-            console.log('📋 URL:', paper.url);
-        });
+        if (paperLink) {
+            paperLink.addEventListener('click', function(e) {
+                console.log('🔗 Paper title clicked - Opening:', paper.title);
+                console.log('📋 URL:', paper.url);
+            });
+        }
+        if (readMoreLink) {
+            readMoreLink.addEventListener('click', function(e) {
+                console.log('🔗 Read more clicked - Opening:', paper.title);
+                console.log('📋 URL:', paper.url);
+            });
+        }
     }
-    
-    // Global refresh function
+
     window.refreshPaper = function() {
         console.log('🔄 Refresh button clicked');
-        
-        // Show loading state briefly
         const refreshBtn = document.getElementById('refresh-btn');
         if (refreshBtn) {
             refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             refreshBtn.disabled = true;
         }
-        
-        // Add a brief loading animation
         setTimeout(() => {
             showRandomPaper();
         }, 600);
     };
-    // Add to your existing paper.js file or create new images.js
 
-document.addEventListener('DOMContentLoaded', function() {
     // Add image widgets after a short delay
     setTimeout(() => {
         addImageWidgets();
     }, 500);
-});
 
-function addImageWidgets() {
-    const sidebar = document.querySelector('.sidebar');
-    
-    // Featured Neural Interface Widget
-    const featuredWidget = document.createElement('div');
-    featuredWidget.className = 'widget';
-    featuredWidget.innerHTML = `
-        <div class="widget-header">
-            <h2 class="widget-title"><i class="fas fa-microscope"></i> NEURAL_INTERFACE</h2>
-        </div>
-        <div class="widget-content" style="padding: 10px;">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAB4AKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Z" 
-                 style="width: 100%; height: 120px; object-fit: cover; border-radius: 3px; 
-                        border: 1px solid var(--accent-green); cursor: pointer; 
-                        transition: all 0.3s ease;"
-                 onclick="showModal(this.src, 'Neural Interface Visualization')"
-                 onmouseover="this.style.boxShadow='0 0 15px rgba(0, 255, 65, 0.5)'"
-                 onmouseout="this.style.boxShadow='none'">
-            <div style="font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; 
-                       color: var(--accent-cyan); text-align: center; margin-top: 8px;">
-                <i class="fas fa-brain"></i> Digital Consciousness
+    function addImageWidgets() {
+        const sidebar = document.querySelector('.sidebar');
+        if (!sidebar) return;
+
+        // Featured Neural Interface Widget
+        const featuredWidget = document.createElement('div');
+        featuredWidget.className = 'widget';
+        featuredWidget.innerHTML = `
+            <div class="widget-header">
+                <h2 class="widget-title"><i class="fas fa-microscope"></i> NEURAL_INTERFACE</h2>
             </div>
-        </div>
-    `;
-    
-    // Lab Gallery Widget  
-    const galleryWidget = document.createElement('div');
-    galleryWidget.className = 'widget';
-    galleryWidget.innerHTML = `
-        <div class="widget-header">
-            <h2 class="widget-title"><i class="fas fa-images"></i> LAB_GALLERY</h2>
-        </div>
-        <div class="widget-content" style="padding: 15px;">
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
-                     style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
-                            border: 1px solid var(--border-color); cursor: pointer; 
+            <div class="widget-content" style="padding: 10px;">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAB4AKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Z" 
+                     style="width: 100%; height: 120px; object-fit: cover; border-radius: 3px; 
+                            border: 1px solid var(--accent-green); cursor: pointer; 
                             transition: all 0.3s ease;"
-                     onclick="showModal(this.src, 'DNA Digital Analysis')"
-                     onmouseover="this.style.borderColor='var(--accent-cyan)'; this.style.boxShadow='0 0 10px rgba(0, 255, 255, 0.3)'"
-                     onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-                
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
-                     style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
-                            border: 1px solid var(--border-color); cursor: pointer; 
-                            transition: all 0.3s ease;"
-                     onclick="showModal(this.src, 'Cybernetic Interface')"
-                     onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
-                     onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-                
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
-                     style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
-                            border: 1px solid var(--border-color); cursor: pointer; 
-                            transition: all 0.3s ease;"
-                     onclick="showModal(this.src, 'Digital Surgery')"
-                     onmouseover="this.style.borderColor='var(--accent-red)'; this.style.boxShadow='0 0 10px rgba(255, 0, 64, 0.3)'"
-                     onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-                
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAxQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
-                     style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
-                            border: 1px solid var(--border-color); cursor: pointer; 
-                            transition: all 0.3s ease;"
-                     onclick="showModal(this.src, 'Neural Mapping')"
-                     onmouseover="this.style.borderColor='#9b59b6'; this.style.boxShadow='0 0 10px rgba(155, 89, 182, 0.3)'"
-                     onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                     onclick="showModal(this.src, 'Neural Interface Visualization')"
+                     onmouseover="this.style.boxShadow='0 0 15px rgba(0, 255, 65, 0.5)'"
+                     onmouseout="this.style.boxShadow='none'">
+                <div style="font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; 
+                           color: var(--accent-cyan); text-align: center; margin-top: 8px;">
+                    <i class="fas fa-brain"></i> Digital Consciousness
+                </div>
             </div>
-        </div>
-    `;
-    
-    // Insert widgets into sidebar
-    sidebar.insertBefore(featuredWidget, sidebar.children[1]);
-    sidebar.appendChild(galleryWidget);
-    
-    // Add modal
-    addModal();
-}
+        `;
+        
+        // Lab Gallery Widget  
+        const galleryWidget = document.createElement('div');
+        galleryWidget.className = 'widget';
+        galleryWidget.innerHTML = `
+            <div class="widget-header">
+                <h2 class="widget-title"><i class="fas fa-images"></i> LAB_GALLERY</h2>
+            </div>
+            <div class="widget-content" style="padding: 15px;">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
+                         style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
+                                border: 1px solid var(--border-color); cursor: pointer; 
+                                transition: all 0.3s ease;"
+                         onclick="showModal(this.src, 'DNA Digital Analysis')"
+                         onmouseover="this.style.borderColor='var(--accent-cyan)'; this.style.boxShadow='0 0 10px rgba(0, 255, 255, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                    
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
+                         style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
+                                border: 1px solid var(--border-color); cursor: pointer; 
+                                transition: all 0.3s ease;"
+                         onclick="showModal(this.src, 'Cybernetic Interface')"
+                         onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                    
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
+                         style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
+                                border: 1px solid var(--border-color); cursor: pointer; 
+                                transition: all 0.3s ease;"
+                         onclick="showModal(this.src, 'Digital Surgery')"
+                         onmouseover="this.style.borderColor='var(--accent-red)'; this.style.boxShadow='0 0 10px rgba(255, 0, 64, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                    
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAxQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
+                         style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
+                                border: 1px solid var(--border-color); cursor: pointer; 
+                                transition: all 0.3s ease;"
+                         onclick="showModal(this.src, 'Neural Mapping')"
+                         onmouseover="this.style.borderColor='#9b59b6'; this.style.boxShadow='0 0 10px rgba(155, 89, 182, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                </div>
+            </div>
+        `;
+        
+        sidebar.insertBefore(featuredWidget, sidebar.children[1]);
+        sidebar.appendChild(galleryWidget);
+        addModal();
+    }
 
-function addModal() {
-    const modal = document.createElement('div');
-    modal.id = 'imageModal';
-    modal.innerHTML = `
-        <div style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; 
-                   width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9);" 
-             onclick="closeModal()">
-            <span style="position: absolute; top: 15px; right: 35px; color: var(--accent-green); 
-                         font-size: 40px; font-weight: bold; cursor: pointer; 
-                         font-family: 'Share Tech Mono', monospace;"
-                  onclick="closeModal()">&times;</span>
-            <img id="modalImg" style="margin: auto; display: block; width: 80%; max-width: 700px; 
-                                     margin-top: 5%; border: 2px solid var(--accent-green);">
-            <div id="caption" style="margin: auto; display: block; width: 80%; max-width: 700px; 
-                                   text-align: center; color: var(--accent-green); padding: 10px 0; 
-                                   font-family: 'Share Tech Mono', monospace;"></div>
-        </div>
-    `;
-    document.body.appendChild(modal);
-}
+    function addModal() {
+        // Only add modal if not already present
+        if (document.getElementById('imageModal')) return;
+        const modal = document.createElement('div');
+        modal.id = 'imageModal';
+        modal.innerHTML = `
+            <div style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; 
+                       width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9);" 
+                 onclick="closeModal()">
+                <span style="position: absolute; top: 15px; right: 35px; color: var(--accent-green); 
+                             font-size: 40px; font-weight: bold; cursor: pointer; 
+                             font-family: 'Share Tech Mono', monospace;"
+                      onclick="closeModal()">&times;</span>
+                <img id="modalImg" style="margin: auto; display: block; width: 80%; max-width: 700px; 
+                                         margin-top: 5%; border: 2px solid var(--accent-green);">
+                <div id="caption" style="margin: auto; display: block; width: 80%; max-width: 700px; 
+                                       text-align: center; color: var(--accent-green); padding: 10px 0; 
+                                       font-family: 'Share Tech Mono', monospace;"></div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
 
-function showModal(src, caption) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImg');
-    const captionText = document.getElementById('caption');
-    
-    modal.firstElementChild.style.display = 'block';
-    modalImg.src = src;
-    captionText.innerHTML = caption;
-}
+    window.showModal = function(src, caption) {
+        const modal = document.getElementById('imageModal');
+        const modalInner = modal.firstElementChild;
+        const modalImg = document.getElementById('modalImg');
+        const captionText = document.getElementById('caption');
+        modalInner.style.display = 'block';
+        modalImg.src = src;
+        captionText.innerHTML = caption;
+    }
 
-function closeModal() {
-    document.getElementById('imageModal').firstElementChild.style.display = 'none';
-}
-    // Initialize sidebar placeholders
+    window.closeModal = function() {
+        const modal = document.getElementById('imageModal');
+        if (modal && modal.firstElementChild) {
+            modal.firstElementChild.style.display = 'none';
+        }
+    }
+
+    // Only show placeholders if widgets are empty
     initializeSidebarPlaceholders();
-    
+
+    function initializeSidebarPlaceholders() {
+        const recentPostsWidget = document.getElementById('recent-posts-widget');
+        if (recentPostsWidget && recentPostsWidget.innerHTML.trim() === '') {
+            recentPostsWidget.innerHTML = `
+                <div style="padding: 20px; text-align: center;">
+                    <div style="font-family: 'Share Tech Mono', monospace; color: #666; font-style: italic; font-size: 0.85rem;">
+                        // No posts found
+                    </div>
+                    <div style="font-family: 'Share Tech Mono', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">
+                        Directory empty
+                    </div>
+                </div>
+            `;
+        }
+        const categoriesWidget = document.getElementById('categories-widget');
+        if (categoriesWidget && categoriesWidget.innerHTML.trim() === '') {
+            categoriesWidget.innerHTML = `
+                <div style="padding: 20px; text-align: center;">
+                    <div style="font-family: 'Share Tech Mono', monospace; color: #666; font-style: italic; font-size: 0.85rem;">
+                        // No tags available
+                    </div>
+                    <div style="font-family: 'Share Tech Mono', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">
+                        Tags will populate with content
+                    </div>
+                </div>
+            `;
+        }
+    }
+
     // Add some console info for debugging
     console.log('✅ Paper system initialized with', curatedPapers.length, 'verified papers');
     console.log('🔗 All papers have matching titles and working URLs');
     console.log('📊 Categories available:', [...new Set(curatedPapers.map(p => p.category))]);
 });
-
-// Function to add placeholder content to sidebar widgets only if empty
-function initializeSidebarPlaceholders() {
-    // Recent Posts placeholder - only if no posts rendered
-    const recentPostsWidget = document.getElementById('recent-posts-widget');
-    if (recentPostsWidget && recentPostsWidget.innerHTML.trim() === '') {
-        recentPostsWidget.innerHTML = `
-            <div style="padding: 20px; text-align: center;">
-                <div style="font-family: 'Share Tech Mono', monospace; color: #666; font-style: italic; font-size: 0.85rem;">
-                    // No posts found
-                </div>
-                <div style="font-family: 'Share Tech Mono', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">
-                    Directory empty
-                </div>
-            </div>
-        `;
-    }
-    
-    // Tags/Categories placeholder - only if empty
-    const categoriesWidget = document.getElementById('categories-widget');
-    if (categoriesWidget && categoriesWidget.innerHTML.trim() === '') {
-        categoriesWidget.innerHTML = `
-            <div style="padding: 20px; text-align: center;">
-                <div style="font-family: 'Share Tech Mono', monospace; color: #666; font-style: italic; font-size: 0.85rem;">
-                    // No tags available
-                </div>
-                <div style="font-family: 'Share Tech Mono', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">
-                    Tags will populate with content
-                </div>
-            </div>
-        `;
-    }
-}
