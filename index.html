@@ -1,240 +1,831 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>NEURAL_DECAY :: Coding + Medicine + Chaos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <style>
-    body {
-      background: #0a0a0a;
-      color: #e0e0e0;
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
-    .container { max-width: 1200px; margin: 0 auto; padding: 20px;}
-    header {
-      background: #1a1a1a;
-      border-bottom: 2px solid #00eeff;
-      padding: 20px 0;
-      margin-bottom: 0;
-    }
-    .logo {
-      font-family: 'Orbitron', monospace;
-      font-size: 2rem;
-      font-weight: 900;
-      color: #00eeff;
-      text-shadow: 0 0 10px #00eeff;
-      text-decoration: none;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-      margin: 0;
-      padding: 0;
-    }
-    nav a {
-      color: #e0e0e0;
-      text-decoration: none;
-      font-family: 'Share Tech Mono', monospace;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-      position: relative;
-      cursor: pointer;
-    }
-    nav a:hover {
-      color: #18a4f4;
-      text-shadow: 0 0 5px #18a4f4;
-    }
-    main { display: flex; gap: 40px; padding: 40px 0; }
-    .content-area { flex: 2; }
-    .sidebar { flex: 1; display: flex; flex-direction: column; gap: 30px;}
-    .widget { background: #1a1a1a; border: 1px solid #333; border-radius: 5px; margin-bottom: 0; }
-    .widget-header { background: #2a2a2a; padding: 15px; border-bottom: 1px solid #333; }
-    .widget-title { font-family: 'Orbitron', monospace; color: #00eeff; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
-    .widget-content { padding: 20px; }
-    .recent-posts a { display: block; color: #b0b0b0; text-decoration: none; padding: 8px 0; border-bottom: 1px solid #333; transition: color 0.3s ease; font-size: 0.9rem; cursor: pointer;}
-    .recent-posts a:last-child { border-bottom: none;}
-    .recent-posts a:hover { color: #18a4f4;}
-    .blog-posts h2 { font-family: 'Orbitron', monospace; color: #19fbec; margin-bottom: 20px; padding: 15px; background: #2a2a2a; border-left: 4px solid #19fbec; text-transform: uppercase; letter-spacing: 2px;}
-    .post { border-bottom: 1px solid #333; padding: 25px; transition: background 0.3s ease;}
-    .post:hover { background: #2a2a2a;}
-    .post:last-child { border-bottom: none;}
-    .post-meta { font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; color: #b0b0b0; margin-bottom: 10px;}
-    .post-category { background: #00eeff; color: #000; padding: 2px 8px; border-radius: 3px; font-weight: bold; margin-right: 10px;}
-    .post-category.coding { background: #00eeff; color: #000; }
-    .post h3 { font-family: 'Orbitron', monospace; color: #e0e0e0; margin-bottom: 15px; font-size: 1.3rem;}
-    .post h3 a { color: inherit; text-decoration: none; transition: color 0.3s ease;}
-    .post h3 a:hover { color: #00eeff;}
-    .post-excerpt { color: #b0b0b0; margin-bottom: 15px;}
-    .read-more { color: #18a4f4; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; transition: all 0.3s ease;}
-    .read-more:hover { color: #00eeff; text-shadow: 0 0 5px #00eeff;}
-    .full-post-content { padding: 30px; line-height: 1.7;}
-    .full-post-content h1 { font-family: 'Orbitron', monospace; color: #00eeff; margin-bottom: 20px; font-size: 1.8rem;}
-    .full-post-content a { color: #18a4f4; text-decoration: none; transition: all 0.3s ease;}
-    .full-post-content a:hover { color: #00eeff; text-shadow: 0 0 5px #00eeff;}
-    .back-button { background: transparent; border: 1px solid #00eeff; color: #00eeff; font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; padding: 8px 12px; border-radius: 3px; cursor: pointer; margin-bottom: 20px; transition: all 0.3s ease;}
-    .back-button:hover { background: #00eeff; color: #000;}
-    @media (max-width: 900px) {
-      main { flex-direction: column; }
-      .sidebar { flex-direction: row; gap: 15px; }
-      .content-area, .sidebar { width: 100%; flex: none; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEURAL_DECAY :: Coding + Medicine + Chaos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-accent: #2a2a2a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent-green: #00eeff;
+            --accent-red: #19fbec;
+            --accent-cyan: #18a4f4;
+            --border-color: #333;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Terminal/Matrix background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 65, 0.02) 2px,
+                    rgba(0, 255, 65, 0.02) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--accent-green);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-green);
+            text-shadow: 0 0 10px var(--accent-green);
+            text-decoration: none;
+        }
+        
+        .tagline {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        nav a:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 5px var(--accent-cyan);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+        
+        .content-area {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        /* Welcome Terminal */
+        .terminal-welcome {
+            background: #000;
+            border: 1px solid var(--accent-green);
+            border-radius: 5px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .terminal-header {
+            background: var(--bg-accent);
+            padding: 10px 15px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            border-bottom: 1px solid var(--accent-green);
+        }
+        
+        .terminal-body {
+            padding: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .prompt {
+            color: var(--accent-green);
+        }
+        
+        .command {
+            color: var(--accent-cyan);
+        }
+        
+        .output {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Blog Posts */
+        .blog-posts h2 {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-red);
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--bg-accent);
+            border-left: 4px solid var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .post {
+            border-bottom: 1px solid var(--border-color);
+            padding: 25px;
+            transition: background 0.3s ease;
+        }
+        
+        .post:hover {
+            background: var(--bg-accent);
+        }
+        
+        .post:last-child {
+            border-bottom: none;
+        }
+        
+        .post-meta {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        
+        .post-category {
+            background: var(--accent-green);
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .post-category.medicine { background: var(--accent-red); color: white; }
+        .post-category.bioinformatics { background: var(--accent-cyan); color: #000; }
+        .post-category.coding { background: var(--accent-green); color: #000; }
+        
+        .post h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .post h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .post h3 a:hover {
+            color: var(--accent-green);
+        }
+        
+        .post-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .read-more:hover {
+            color: var(--accent-green);
+            text-shadow: 0 0 5px var(--accent-green);
+        }
+        
+        /* Full Post Styles */
+        .full-post-content {
+            padding: 30px;
+            line-height: 1.7;
+        }
+        
+        .full-post-content h1 {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .full-post-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .full-post-content a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .full-post-content a:hover {
+            color: var(--accent-green);
+            text-shadow: 0 0 5px var(--accent-green);
+        }
+        
+        .back-button {
+            background: transparent;
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: var(--accent-green);
+            color: #000;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .widget {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .widget-header {
+            background: var(--bg-accent);
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .widget-title {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-green);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .widget-content {
+            padding: 20px;
+        }
+        
+        .recent-posts a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        .recent-posts a:hover {
+            color: var(--accent-cyan);
+        }
+        
+        .recent-posts a:last-child {
+            border-bottom: none;
+        }
+        
+        /* Empty state styles */
+        .no-posts {
+            padding: 20px;
+        }
+        
+        .terminal-empty {
+            background: #000;
+            border: 1px solid var(--accent-green);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .empty-text {
+            color: #666;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 2px solid var(--accent-green);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--text-secondary);
+        }
+        
+        .social-links {
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-green);
+            text-shadow: 0 0 10px var(--accent-green);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Glitch animation */
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        .glitch:hover {
+            animation: glitch 0.3s infinite;
+        }
+    </style>
 </head>
 <body>
-  <header>
+    <header id="home">
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <a href="#home" class="logo glitch" onclick="showAllPosts()">NEURAL_DECAY</a>
+                    <div class="tagline">> coding + medicine + digital_chaos</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a onclick="showAllPosts()">home</a></li>
+                        <li><a onclick="showPostsByTag('coding')">coding</a></li>
+                        <li><a onclick="showPostsByTag('medicine')">medicine</a></li>
+                        <li><a onclick="showPostsByTag('bioinformatics')">bio_info</a></li>
+                        <li><a href="#contact">contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-      <a href="#" class="logo" onclick="showAllPosts()">NEURAL_DECAY</a>
-      <nav>
-        <ul>
-          <li><a href="#" onclick="showAllPosts()">home</a></li>
-          <li><a href="#" onclick="showPostsByTag('coding')">coding</a></li>
-          <li><a href="#" onclick="showPostsByTag('medicine')">medicine</a></li>
-          <li><a href="#" onclick="showPostsByTag('bioinformatics')">bio_info</a></li>
-        </ul>
-      </nav>
+        <main>
+            <div class="content-area">
+                <div id="about" class="terminal-welcome">
+                    <div class="terminal-header">
+                        user@neural_decay:~$ ./welcome.sh
+                    </div>
+                    <div class="terminal-body">
+                        <div class="output">
+                            <span class="prompt">root@system:~#</span> <span class="command">whoami</span><br>
+                            <span class="output">// weirdo + imposter_syndrome && cellular_biology_wit</span><br>
+                            <span class="output">// bridging medicine + technology</span><br>
+                            <span class="output">// currently stuck in bioinformatics hell</span><br><br>
+                            
+                            <span class="prompt">root@system:~#</span> <span class="command">sovix_mission.txt</span><br>
+                            <span class="output">Documenting the intersection of biological systems and digital architecture.</span><br>
+                            <span class="output">Where medical knowledge(MS2 approved) meets debugging (and vibe coding).</span><br>
+                            <span class="output">Status: [ONLINE] - Ready to dissect tissue + machine leaning.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="about-section" class="terminal-welcome">
+                    <div class="terminal-header">
+                        user@neural_decay:~$ ./readme.sh
+                    </div>
+                    <div class="terminal-body">
+                        <div class="output">
+                            <span class="prompt">root@system:~#</span> <span class="command">sociopathic_tendencies/ego_too_big/profile.d/sara.sh</span><br>
+                            <span class="output"> Medical student passionate about bridging science, humanity, and innovation. Currently training and studying in my 2nd year of university at UMFCD, Bucharest to become a physician with a deep interest in research, coding and clinical medicin</span><br>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="coding" class="blog-posts">
+                    <h2><i class="fas fa-terminal"></i> Recent_Transmissions</h2>
+                    <div id="posts-container">
+                        <!-- Blog posts will be dynamically inserted here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            <aside class="sidebar">
+                <div class="widget">
+                    <div class="widget-header">
+                        <h2 class="widget-title"><i class="fas fa-book-open"></i> PAPER_OF_THE_DAY</h2>
+                    </div>
+                    <div class="widget-content" id="paper-of-the-day">
+                        <!-- Paper content will be loaded here -->
+                    </div>
+                </div>
+
+                <div id="bioinformatics" class="widget">
+                    <div class="widget-header">
+                        <h2 class="widget-title"><i class="fas fa-history"></i> RECENT_POSTS</h2>
+                    </div>
+                    <div class="widget-content">
+                        <div id="recent-posts-widget" class="recent-posts">
+                            <!-- Recent posts list will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="medicine" class="widget">
+                    <div class="widget-header">
+                        <h2 class="widget-title"><i class="fas fa-tags"></i> TAGS</h2>
+                    </div>
+                    <div class="widget-content">
+                        <div id="categories-widget" class="recent-posts">
+                            <!-- Category list will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <div class="widget">
+            <div class="widget-header">
+                <h2 class="widget-title">
+                    <i class="fas fa-images"></i> GALLERY
+                </h2>
+            </div>
+            <div class="widget-content" style="padding: 15px;">
+                <div style="display: flex; justify-content: space-around; align-items: center; gap: 10px;">
+                    <img src="images/brain_visualizer.jpg" alt="Digital Consciousness Interface"
+                         style="width: 200px; height: 200px; object-fit: cover; border-radius: 3px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease;"
+                         onclick="openImageModal(this)"
+                         onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                    
+                    <img src="images/cyber_hands.jpg" alt="Cyber Interface"
+                         style="width: 200px; height: 200px; object-fit: cover; border-radius: 3px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease;"
+                         onclick="openImageModal(this)"
+                         onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                    
+                    <img src="images/3heads.jpg" alt="3heads"
+                         style="width: 200px; height: 200px; object-fit: cover; border-radius: 3px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease;"
+                         onclick="openImageModal(this)"
+                         onmouseover="this.style.borderColor='var(--accent-red)'; this.style.boxShadow='0 0 10px rgba(255, 0, 64, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                    
+                    <img src="images/bioinfo.jpg" alt="bioinformatics"
+                         style="width: 200px; height: 200px; object-fit: cover; border-radius: 3px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease;"
+                         onclick="openImageModal(this)"
+                         onmouseover="this.style.borderColor='#9b59b6'; this.style.boxShadow='0 0 10px rgba(155, 89, 182, 0.3)'"
+                         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
-  <div class="container">
-    <main>
-      <div class="content-area">
-        <div class="blog-posts">
-          <h2>Recent_Transmissions</h2>
-          <div id="posts-container"></div>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 NEURAL_DECAY - The Multidisciplinary Dome of the Future and Beyond</p>
+                <p>Powered by irish cream latte, curiosity, and countless google searches</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
-      <aside class="sidebar">
-        <div class="widget">
-          <div class="widget-header">
-            <span class="widget-title"><i class="fas fa-book-open"></i> PAPER_OF_THE_DAY</span>
-          </div>
-          <div class="widget-content" id="paper-of-the-day"></div>
-        </div>
-        <div class="widget">
-          <div class="widget-header">
-            <span class="widget-title"><i class="fas fa-history"></i> RECENT_POSTS</span>
-          </div>
-          <div class="widget-content">
-            <div id="recent-posts-widget" class="recent-posts"></div>
-          </div>
-        </div>
-        <div class="widget">
-          <div class="widget-header">
-            <span class="widget-title"><i class="fas fa-tags"></i> TAGS</span>
-          </div>
-          <div class="widget-content">
-            <div id="categories-widget" class="recent-posts"></div>
-          </div>
-        </div>
-      </aside>
-    </main>
-  </div>
-  <script src="posts.js"></script>
-  <script>
-    window.showPostsByTag = function(tag) {
-      renderPostsByTag(tag);
-      window.location.hash = "tag-" + tag;
-    };
-    window.showAllPosts = function() {
-      renderPostsByTag();
-      window.location.hash = "";
-    };
-    window.showFullPost = function(postId) {
-      const post = allPosts.find(p => p.id === postId);
-      if (post) {
-        const container = document.getElementById('posts-container');
-        container.innerHTML = `
-          <div class="full-post">
-            <button onclick="showAllPosts()" class="back-button">
-              <i class="fas fa-arrow-left"></i> Back to Posts
-            </button>
-            <article class="post full-post-content">
-              <div class="post-meta">
-                <span class="post-category coding">${post.category}</span>
-                <span class="post-date">${post.date}</span>
-              </div>
-              <h1>${post.title}</h1>
-              <div class="post-content">${post.content.replace(/\n/g, '<br>')}</div>
-              <div style="margin-top:15px;">
-                ${post.tags ? post.tags.map(tag=>`<a href="javascript:void(0)" onclick="showPostsByTag('${tag}')">#${tag}</a>`).join(' ') : ''}
-              </div>
-              ${post.id === 'plasmyrage' ? `<a href="https://gravityeffect1.github.io/plasmyrage/" target="_blank" style="color:#00eeff">View Live Demo</a>` : ''}
-            </article>
-          </div>
-        `;
-        window.location.hash = "post-" + post.id;
-      }
-    };
-    function renderPostsByTag(tag=null) {
-      const container = document.getElementById('posts-container');
-      container.innerHTML = '';
-      let postsToShow = allPosts;
-      if (tag) {
-        postsToShow = allPosts.filter(post => post.tags.includes(tag));
-        container.innerHTML += `<div style="margin-bottom:15px;"><b>Tag:</b> #${tag} (${postsToShow.length})</div>`;
-      }
-      if (postsToShow.length === 0) {
-        container.innerHTML += `<div style="color:#888;font-style:italic;">No posts found.</div>`;
-        return;
-      }
-      postsToShow.forEach(post => {
-        const postElement = document.createElement('article');
-        postElement.className = 'post';
-        postElement.innerHTML = `
-          <div class="post-meta"><span class="post-category coding">${post.category}</span> <span class="post-date">${post.date}</span></div>
-          <h3><a href="javascript:void(0)" onclick="showFullPost('${post.id}')">${post.title}</a></h3>
-          <p class="post-excerpt">${post.excerpt}</p>
-          <a href="javascript:void(0)" class="read-more" onclick="showFullPost('${post.id}')">Read Transmission &gt;</a>
-        `;
-        container.appendChild(postElement);
-      });
-    }
-    function renderRecentPostsWidget(posts) {
-      const container = document.getElementById('recent-posts-widget');
-      const recentPosts = posts.slice(0, 5);
-      if (recentPosts.length > 0) {
-        container.innerHTML = recentPosts.map(p =>
-          `<a href="javascript:void(0)" onclick="showFullPost('${p.id}')">${p.title}</a>`
-        ).join('');
-      } else {
-        container.innerHTML = '<div style="padding: 20px; text-align: center; color:#888;">// No posts found</div>';
-      }
-    }
-    function renderTagsWidget(posts) {
-      const container = document.getElementById('categories-widget');
-      const allTags = posts.flatMap(p => p.tags || []);
-      const uniqueTags = [...new Set(allTags)];
-      if (uniqueTags.length > 0) {
-        container.innerHTML = uniqueTags.map(tag =>
-          `<a href="javascript:void(0)" onclick="showPostsByTag('${tag}')">#${tag}</a>`
-        ).join(' ');
-      } else {
-        container.innerHTML = '<div style="padding: 20px; color:#888;">// No tags available</div>';
-      }
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-      renderPostsByTag();
-      renderRecentPostsWidget(allPosts);
-      renderTagsWidget(allPosts);
-      // Handle hash navigation on page load
-      if (window.location.hash) {
-        const hash = window.location.hash.substr(1);
-        if (hash.startsWith('tag-')) {
-          const tag = hash.replace('tag-', '');
-          showPostsByTag(tag);
-        } else if (hash.startsWith('post-')) {
-          const postId = hash.replace('post-', '');
-          showFullPost(postId);
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9);" onclick="closeImageModal()">
+        <span style="position: absolute; top: 15px; right: 35px; color: var(--accent-green); font-size: 40px; font-weight: bold; cursor: pointer; font-family: 'Share Tech Mono', monospace;" onclick="closeImageModal()">&times;</span>
+        <img id="modalImg" style="margin: auto; display: block; width: 80%; max-width: 700px; margin-top: 5%; border: 2px solid var(--accent-green);">
+        <div id="caption" style="margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: var(--accent-green); padding: 10px 0; font-family: 'Share Tech Mono', monospace;"></div>
+    </div>
+
+    <script src="posts.js"></script>
+    <script>
+        // Current view state
+        let currentView = 'all';
+        let currentTag = null;
+
+        function renderPostsByTag(tag = null) {
+            const container = document.getElementById('posts-container');
+            container.innerHTML = '';
+            
+            let postsToShow = allPosts;
+            
+            if (tag) {
+                postsToShow = allPosts.filter(post => post.tags.includes(tag));
+                currentView = 'tag';
+                currentTag = tag;
+                
+                // Add a "showing posts for tag" header
+                const tagHeader = document.createElement('div');
+                tagHeader.innerHTML = `
+                    <div style="background: var(--bg-accent); border: 1px solid var(--accent-cyan); 
+                               border-radius: 5px; padding: 15px; margin-bottom: 20px;">
+                        <h3 style="font-family: 'Orbitron', monospace; color: var(--accent-cyan); 
+                                  margin: 0; text-transform: uppercase; letter-spacing: 1px;">
+                            <i class="fas fa-tag"></i> TAG: #${tag}
+                        </h3>
+                        <p style="font-family: 'Share Tech Mono', monospace; color: var(--text-secondary); 
+                                  font-size: 0.8rem; margin: 5px 0 0 0;">
+                            // Showing ${postsToShow.length} post${postsToShow.length === 1 ? '' : 's'} with this tag
+                        </p>
+                        <button onclick="showAllPosts()" 
+                                style="background: transparent; border: 1px solid var(--accent-cyan); 
+                                       color: var(--accent-cyan); font-family: 'Share Tech Mono', monospace; 
+                                       font-size: 0.7rem; padding: 4px 8px; border-radius: 3px; cursor: pointer; 
+                                       margin-top: 10px; transition: all 0.3s ease;"
+                                onmouseover="this.style.background='var(--accent-cyan)'; this.style.color='#000'"
+                                onmouseout="this.style.background='transparent'; this.style.color='var(--accent-cyan)'">
+                            <i class="fas fa-arrow-left"></i> BACK TO ALL POSTS
+                        </button>
+                    </div>
+                `;
+                container.appendChild(tagHeader);
+            } else {
+                currentView = 'all';
+                currentTag = null;
+            }
+            
+            if (postsToShow.length === 0) {
+                container.innerHTML += `
+                    <div class="no-posts">
+                        <div class="terminal-empty">
+                            <div class="terminal-header">user@neural_decay:~$ find . -type f -name "*${tag}*"</div>
+                            <div class="terminal-body">
+                                <span class="prompt">root@system:~#</span> <span class="command">ls -la</span><br>
+                                <span class="output">// No posts found for this tag</span><br>
+                                <span class="output">// Status: [AWAITING_CONTENT]</span>
+                            </div>
+                        </div>
+                    </div>`;
+                return;
+            }
+            
+            postsToShow.forEach(post => {
+                const postElement = document.createElement('article');
+                postElement.className = 'post';
+                postElement.innerHTML = `
+                    <div class="post-meta">
+                        <span class="post-category ${post.category}">${post.category}</span>
+                        <span class="post-date">${post.date}</span>
+                    </div>
+                    <h3><a href="javascript:void(0)" onclick="showFullPost('${post.id}')">${post.title}</a></h3>
+                    <p class="post-excerpt">${post.excerpt}</p>
+                    <a href="javascript:void(0)" class="read-more" onclick="showFullPost('${post.id}')">Read Transmission &gt;</a>
+                `;
+                container.appendChild(postElement);
+            });
         }
-      }
-    });
-  </script>
-  <script src="paper.js"></script>
+
+        function getTagIcon(tag) {
+            const icons = {
+                'coding': 'code',
+                'medicine': 'stethoscope',
+                'bioinformatics': 'dna'
+            };
+            return icons[tag] || 'terminal';
+        }
+
+        // Global functions for navigation
+        window.showPostsByTag = function(tag) {
+            renderPostsByTag(tag);
+            window.location.hash = `tag-${tag}`;
+        };
+
+        window.showAllPosts = function() {
+            renderPostsByTag();
+            window.location.hash = '';
+        };
+
+        window.showFullPost = function(postId) {
+            const post = allPosts.find(p => p.id === postId);
+            if (post) {
+                const container = document.getElementById('posts-container');
+                container.innerHTML = `
+                    <div class="full-post">
+                        <button onclick="showAllPosts()" class="back-button">
+                            <i class="fas fa-arrow-left"></i> Back to Posts
+                        </button>
+                        
+                        <article class="post full-post-content">
+                            <div class="post-meta">
+                                <span class="post-category ${post.category}">${post.category}</span>
+                                <span class="post-date">${post.date}</span>
+                            </div>
+                            <h1>${post.title}</h1>
+                            
+                            <div class="post-content" style="color: var(--text-primary); line-height: 1.7;">
+                                ${post.content.split('\n\n').map(paragraph => 
+                                    `<p>${paragraph.trim().replace(/\n/g, '<br>')}</p>`
+                                ).join('')}
+                            </div>
+                            
+                            <div class="post-footer" style="margin-top: 30px; padding-top: 20px; 
+                                                          border-top: 1px solid var(--border-color);">
+                                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
+                                    ${post.tags ? post.tags.map(tag => 
+                                        `<a href="javascript:void(0)" onclick="showPostsByTag('${tag}')" style="background: var(--accent-cyan); color: #000; 
+                                                      padding: 3px 8px; border-radius: 3px; 
+                                                      font-family: 'Share Tech Mono', monospace; 
+                                                      font-size: 0.7rem; text-decoration: none;">#${tag}</a>`
+                                    ).join('') : ''}
+                                </div>
+                                
+                                ${post.id === 'plasmyrage' ? `
+                                <a href="https://gravityeffect1.github.io/plasmyrage/" target="_blank" 
+                                   style="background: var(--accent-green); color: #000; padding: 10px 20px; 
+                                          border-radius: 3px; text-decoration: none; 
+                                          font-family: 'Share Tech Mono', monospace; 
+                                          display: inline-block; margin-right: 10px;">
+                                    <i class="fas fa-external-link-alt"></i> View Live Demo
+                                </a>` : ''}
+                            </div>
+                        </article>
+                    </div>
+                `;
+                window.location.hash = `post-${post.id}`;
+            }
+        };
+
+        function renderRecentPostsWidget(posts) {
+            const container = document.getElementById('recent-posts-widget');
+            // Take the 5 most recent posts
+            const recentPosts = posts.slice(0, 5);
+            if (recentPosts.length > 0) {
+                container.innerHTML = recentPosts.map(p => 
+                    `<a href="javascript:void(0)" onclick="showFullPost('${p.id}')">${p.title}</a>`
+                ).join('');
+            }
+            else {
+                container.innerHTML = '<div style="padding: 20px; text-align: center;"><div style="font-family: \'Share Tech Mono\', monospace; color: #666; font-style: italic; font-size: 0.85rem;">// No posts found</div><div style="font-family: \'Share Tech Mono\', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">Directory empty</div></div>';
+            }
+        }
+
+        function renderTagsWidget(posts) {
+            const container = document.getElementById('categories-widget');
+            const allTags = posts.flatMap(p => p.tags || []);
+            const uniqueTags = [...new Set(allTags)];
+            
+            if (uniqueTags.length > 0) {
+                container.innerHTML = uniqueTags.map(tag => 
+                    `<a href="javascript:void(0)" onclick="showPostsByTag('${tag}')">#${tag}</a>`
+                ).join('');
+            } else {
+                container.innerHTML = '<div style="padding: 20px; text-align: center;"><div style="font-family: \'Share Tech Mono\', monospace; color: #666; font-style: italic; font-size: 0.85rem;">// No tags available</div><div style="font-family: \'Share Tech Mono\', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">Tags will populate with content</div></div>';
+            }
+        }
+
+        // Image modal functions
+        function openImageModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            const caption = document.getElementById('caption');
+            
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            caption.innerHTML = img.alt;
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // The allPosts variable is now available from posts.js
+            renderPostsByTag();
+            renderRecentPostsWidget(allPosts);
+            renderTagsWidget(allPosts);
+            
+            // Handle hash navigation on page load
+            if (window.location.hash) {
+                const hash = window.location.hash.substr(1);
+                if (hash.startsWith('tag-')) {
+                    const tag = hash.replace('tag-', '');
+                    showPostsByTag(tag);
+                } else if (hash.startsWith('post-')) {
+                    const postId = hash.replace('post-', '');
+                    showFullPost(postId);
+                }
+            }
+        });
+    </script>
+    <script src="paper.js"></script>
 </body>
 </html>
