@@ -38,6 +38,7 @@
             overflow-x: hidden;
         }
         
+        /* Terminal/Matrix background effect */
         body::before {
             content: '';
             position: fixed;
@@ -65,6 +66,7 @@
             padding: 0 20px;
         }
         
+        /* Header */
         header {
             background: var(--bg-secondary);
             border-bottom: 2px solid var(--accent-green);
@@ -135,6 +137,7 @@
             width: 100%;
         }
         
+        /* Main Content */
         main {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -149,6 +152,7 @@
             overflow: hidden;
         }
         
+        /* Welcome Terminal */
         .terminal-welcome {
             background: #000;
             border: 1px solid var(--accent-green);
@@ -185,6 +189,7 @@
             margin-bottom: 10px;
         }
         
+        /* Blog Posts */
         .blog-posts h2 {
             font-family: 'Orbitron', monospace;
             color: var(--accent-red);
@@ -265,6 +270,7 @@
             text-shadow: 0 0 5px var(--accent-green);
         }
         
+        /* Full Post Styles */
         .full-post-content {
             padding: 30px;
             line-height: 1.7;
@@ -311,6 +317,7 @@
             color: #000;
         }
         
+        /* Sidebar */
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -361,6 +368,7 @@
             border-bottom: none;
         }
         
+        /* Empty state styles */
         .no-posts {
             padding: 20px;
         }
@@ -372,6 +380,21 @@
             overflow: hidden;
         }
         
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .empty-text {
+            color: #666;
+        }
+        
+        /* Footer */
         footer {
             background: var(--bg-secondary);
             border-top: 2px solid var(--accent-green);
@@ -401,6 +424,7 @@
             text-shadow: 0 0 10px var(--accent-green);
         }
         
+        /* Responsive */
         @media (max-width: 768px) {
             main {
                 grid-template-columns: 1fr;
@@ -422,6 +446,7 @@
             }
         }
         
+        /* Glitch animation */
         @keyframes glitch {
             0% { transform: translate(0); }
             20% { transform: translate(-2px, 2px); }
@@ -450,6 +475,7 @@
                         <li><a onclick="showPostsByTag('coding')">coding</a></li>
                         <li><a onclick="showPostsByTag('medicine')">medicine</a></li>
                         <li><a onclick="showPostsByTag('bioinformatics')">bio_info</a></li>
+                        <li><a href="#about-section">about</a></li>
                         <li><a href="#contact">contact</a></li>
                     </ul>
                 </nav>
@@ -460,7 +486,7 @@
     <div class="container">
         <main>
             <div class="content-area">
-                <div id="welcome" class="terminal-welcome">
+                <div id="about" class="terminal-welcome">
                     <div class="terminal-header">
                         user@neural_decay:~$ ./welcome.sh
                     </div>
@@ -475,6 +501,18 @@
                             <span class="output">Documenting the intersection of biological systems and digital architecture.</span><br>
                             <span class="output">Where medical knowledge(MS2 approved) meets debugging (and vibe coding).</span><br>
                             <span class="output">Status: [ONLINE] - Ready to dissect tissue + machine leaning.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="about-section" class="terminal-welcome">
+                    <div class="terminal-header">
+                        user@neural_decay:~$ ./readme.sh
+                    </div>
+                    <div class="terminal-body">
+                        <div class="output">
+                            <span class="prompt">root@system:~#</span> <span class="command">sociopathic_tendencies/ego_too_big/profile.d/sara.sh</span><br>
+                            <span class="output"> Medical student passionate about bridging science, humanity, and innovation. Currently training and studying in my 2nd year of university at UMFCD, Bucharest to become a physician with a deep interest in research, coding and clinical medicin</span><br>
                         </div>
                     </div>
                 </div>
@@ -572,6 +610,7 @@
         </div>
     </footer>
 
+    <!-- Image Modal -->
     <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9);" onclick="closeImageModal()">
         <span style="position: absolute; top: 15px; right: 35px; color: var(--accent-green); font-size: 40px; font-weight: bold; cursor: pointer; font-family: 'Share Tech Mono', monospace;" onclick="closeImageModal()">&times;</span>
         <img id="modalImg" style="margin: auto; display: block; width: 80%; max-width: 700px; margin-top: 5%; border: 2px solid var(--accent-green);">
@@ -580,6 +619,7 @@
 
     <script src="posts.js"></script>
     <script>
+        // Current view state
         let currentView = 'all';
         let currentTag = null;
 
@@ -594,6 +634,7 @@
                 currentView = 'tag';
                 currentTag = tag;
                 
+                // Add a "showing posts for tag" header
                 const tagHeader = document.createElement('div');
                 tagHeader.innerHTML = `
                     <div style="background: var(--bg-accent); border: 1px solid var(--accent-cyan); 
@@ -654,6 +695,16 @@
             });
         }
 
+        function getTagIcon(tag) {
+            const icons = {
+                'coding': 'code',
+                'medicine': 'stethoscope',
+                'bioinformatics': 'dna'
+            };
+            return icons[tag] || 'terminal';
+        }
+
+        // Global functions for navigation
         window.showPostsByTag = function(tag) {
             renderPostsByTag(tag);
             window.location.hash = `tag-${tag}`;
@@ -716,6 +767,7 @@
 
         function renderRecentPostsWidget(posts) {
             const container = document.getElementById('recent-posts-widget');
+            // Take the 5 most recent posts
             const recentPosts = posts.slice(0, 5);
             if (recentPosts.length > 0) {
                 container.innerHTML = recentPosts.map(p => 
@@ -733,4 +785,49 @@
             const uniqueTags = [...new Set(allTags)];
             
             if (uniqueTags.length > 0) {
-                container
+                container.innerHTML = uniqueTags.map(tag => 
+                    `<a href="javascript:void(0)" onclick="showPostsByTag('${tag}')">#${tag}</a>`
+                ).join('');
+            } else {
+                container.innerHTML = '<div style="padding: 20px; text-align: center;"><div style="font-family: \'Share Tech Mono\', monospace; color: #666; font-style: italic; font-size: 0.85rem;">// No tags available</div><div style="font-family: \'Share Tech Mono\', monospace; color: #555; font-style: italic; font-size: 0.75rem; margin-top: 5px;">Tags will populate with content</div></div>';
+            }
+        }
+
+        // Image modal functions
+        function openImageModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            const caption = document.getElementById('caption');
+            
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            caption.innerHTML = img.alt;
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // The allPosts variable is now available from posts.js
+            renderPostsByTag();
+            renderRecentPostsWidget(allPosts);
+            renderTagsWidget(allPosts);
+            
+            // Handle hash navigation on page load
+            if (window.location.hash) {
+                const hash = window.location.hash.substr(1);
+                if (hash.startsWith('tag-')) {
+                    const tag = hash.replace('tag-', '');
+                    showPostsByTag(tag);
+                } else if (hash.startsWith('post-')) {
+                    const postId = hash.replace('post-', '');
+                    showFullPost(postId);
+                }
+            }
+        });
+    </script>
+    <script src="paper.js"></script>
+</body>
+</html>
