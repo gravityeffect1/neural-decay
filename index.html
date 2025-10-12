@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEURAL_DECAY : Medicine + Coding + Mania</title>
+    <title>NEURAL_DECAY : Coding + Medicine /title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Cinzel:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Tenor+Sans&display=swap');
@@ -45,7 +45,6 @@
             font-weight: 400;
         }
         
-        /* Elegant paper texture overlay */
         body::before {
             content: '';
             position: fixed;
@@ -69,7 +68,6 @@
             padding: 0 40px;
         }
         
-        /* Header */
         header {
             background: rgba(255, 255, 255, 0.98);
             border-bottom: 1px solid var(--border-color);
@@ -153,7 +151,7 @@
             padding-bottom: 2px;
         }
         
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: var(--text-primary);
         }
         
@@ -169,11 +167,10 @@
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         
-        nav a:hover::before {
+        nav a:hover::before, nav a.active::before {
             transform: translateX(-50%) scaleX(1);
         }
         
-        /* Main Content */
         main {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -196,7 +193,6 @@
             border-color: var(--border-dark);
         }
         
-        /* Welcome Terminal - More Elegant */
         .terminal-welcome {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -251,7 +247,6 @@
             font-size: 1rem;
         }
         
-        /* Blog Posts - Ultra Elegant */
         .blog-posts h2 {
             font-family: 'Bodoni Moda', serif;
             color: var(--text-primary);
@@ -375,7 +370,6 @@
             letter-spacing: 0.15em;
         }
         
-        /* Full Post Styles - Luxurious */
         .full-post-content {
             padding: 56px;
             line-height: 2.1;
@@ -433,7 +427,6 @@
             transform: translateX(-4px);
         }
         
-        /* Sidebar - Refined Elegance */
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -475,43 +468,6 @@
             padding: 32px;
         }
         
-        .recent-posts a {
-            display: block;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border-color);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            font-family: 'Lora', serif;
-            font-size: 0.95rem;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .recent-posts a::before {
-            content: '→';
-            position: absolute;
-            left: -20px;
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            color: var(--text-primary);
-        }
-        
-        .recent-posts a:hover {
-            color: var(--text-primary);
-            padding-left: 16px;
-        }
-        
-        .recent-posts a:hover::before {
-            left: 0;
-            opacity: 1;
-        }
-        
-        .recent-posts a:last-child {
-            border-bottom: none;
-        }
-        
-        /* Empty state styles */
         .no-posts {
             padding: 40px;
         }
@@ -523,21 +479,6 @@
             overflow: hidden;
         }
         
-        .empty-state {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            font-family: 'Cormorant', serif;
-            font-size: 1rem;
-            color: var(--text-tertiary);
-            font-style: italic;
-        }
-        
-        .empty-text {
-            color: var(--text-tertiary);
-        }
-        
-        /* Footer - Sophisticated */
         footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
@@ -575,7 +516,6 @@
             transform: translateY(-3px) scale(1.1);
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             main {
                 grid-template-columns: 1fr;
@@ -609,7 +549,6 @@
             }
         }
         
-        /* Elegant hover animation */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -625,7 +564,6 @@
             animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         
-        /* Image gallery hover effects - refined */
         .widget-content img {
             transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             filter: grayscale(0%);
@@ -638,7 +576,6 @@
             filter: grayscale(0%) brightness(1.05);
         }
         
-        /* Decorative elements */
         .logo::before {
             content: '✦';
             position: absolute;
@@ -653,6 +590,11 @@
             left: -24px;
             opacity: 1;
         }
+
+        /* Hide/show sections based on view */
+        .hide {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -660,15 +602,15 @@
         <div class="container">
             <div class="header-content">
                 <div>
-                    <a href="#home" class="logo" onclick="showAllPosts()">Neural Decay</a>
-                    <div class="tagline">Research · Computational Biology · Innovation </div>
+                    <a href="#" class="logo">Neural Decay</a>
+                    <div class="tagline">Coding · Medicine · Digital Elegance</div>
                 </div>
                 <nav>
                     <ul>
-                        <li><a onclick="showAllPosts()">home</a></li>
-                        <li><a onclick="showPostsByTag('coding')">coding</a></li>
-                        <li><a onclick="showPostsByTag('medicine')">medicine</a></li>
-                        <li><a onclick="showPostsByTag('bioinformatics')">bioinformatics</a></li>
+                        <li><a href="#" data-page="home">home</a></li>
+                        <li><a href="#coding" data-page="coding">coding</a></li>
+                        <li><a href="#medicine" data-page="medicine">medicine</a></li>
+                        <li><a href="#bioinformatics" data-page="bioinformatics">bioinformatics</a></li>
                         <li><a href="#contact">contact</a></li>
                     </ul>
                 </nav>
@@ -679,41 +621,44 @@
     <div class="container">
         <main>
             <div class="content-area">
-                <div id="about" class="terminal-welcome">
-                    <div class="terminal-header">
-                        Identity
-                    </div>
-                    <div class="terminal-body">
-                        <div class="output">
-                            <span class="prompt">Identity</span> <span class="command">Who am I, really? </span><br>
-                            <span class="output">Weirdo with imposter syndrome and a passion for cellular biology and anything microscopic </span><br>
-                            <span class="output">Bridging medicine and technology, one debug at a time </span><br>
-                            <span class="output">Currently navigating the beautiful hell of medical school </span><br>
-                            
-                            <span class="prompt">Mission</span> <span class="command"> Vivere ist cogitare </span><br>
-                            <span class="output">Documenting the intersection of biological systems and digital architecture</span><br>
-                            <span class="output">Where medical knowledge (MS2 approved) meets debugging and creative (messy) coding</span><br>
-                            <span class="output">Status: Online · Ready to dissect tissue and machine learning alike </span>
+                <!-- About sections - only shown on home -->
+                <div id="about-sections">
+                    <div id="about" class="terminal-welcome">
+                        <div class="terminal-header">
+                            Identity
+                        </div>
+                        <div class="terminal-body">
+                            <div class="output">
+                                <span class="prompt">Identity</span> <span class="command">Who am I? </span><br>
+                                <span class="output">Weirdo with imposter syndrome and a passion for cellular biology</span><br>
+                                <span class="output">Bridging medicine and technology, one debug at a time</span><br>
+                                <span class="output">Currently navigating the beautiful chaos of bioinformatics</span><br><br>
+                                
+                                <span class="prompt">Mission</span> <span class="command">Vivere est cogitare. </span><br>
+                                <span class="output">Documenting the intersection of biological systems and digital architecture. </span><br>
+                                <span class="output">Where medical knowledge (MS2 approved) meets debugging and creative coding. </span><br>
+                                <span class="output">Status: Online · Ready to dissect tissue and machine learning alike. </span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="about-section" class="terminal-welcome">
-                    <div class="terminal-header">
-                        Author
-                    </div>
-                    <div class="terminal-body">
-                        <div class="output">
-                            <span class="prompt">Profile</span> <span class="command">Sara Mihaela Sova</span><br>
-                            <span class="output">Medical student passionate about bridging science, humanity, and innovation. Currently training and studying in her second year at UMFCD, Bucharest to become a physician with a deep interest in research, coding, and clinical medicine. Almost always caught procrastinating, embroidering, or being vocal about what she believes in.</span><br>
+                    <div id="about-section" class="terminal-welcome">
+                        <div class="terminal-header">
+                            Author
+                        </div>
+                        <div class="terminal-body">
+                            <div class="output">
+                                <span class="prompt">Profile</span> <span class="command">Sara Mihaela Sova</span><br>
+                                <span class="output">Medical student passionate about bridging science, humanity, and innovation. Currently training and studying in my second year at UMFCD, Bucharest to become a physician with a deep interest in research, coding, and clinical medicine.</span><br>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div id="coding" class="blog-posts">
-                    <h2><i class="fas fa-pen-nib"></i> Recent Writings</h2>
+                    <h2 id="posts-header"><i class="fas fa-pen-nib"></i> Recent Writings</h2>
                     <div id="posts-container">
-                        <!-- Blog posts will be dynamically inserted here by JavaScript -->
+                        <!-- Blog posts will be dynamically inserted here -->
                     </div>
                 </div>
             </div>
@@ -761,8 +706,8 @@
    <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Neural Decay - The Multidisciplinary Dome of the Future and Beyond </p>
-                <p style="margin-top: 8px; font-style: italic; text-transform: none; letter-spacing: 0.05em; font-family: 'Cormorant', serif;">Powered by obsession, home-made research, and endless cups of irish cream latte </p>
+                <p>&copy; 2025 Neural Decay · Multidisciplinary Exploration</p>
+                <p style="margin-top: 8px; font-style: italic; text-transform: none; letter-spacing: 0.05em; font-family: 'Cormorant', serif;">Powered by curiosity, research, and endless cups of coffee</p>
                 <div class="social-links">
                     <a href="https://github.com/gravityeffect1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="https://x.com/gravityeffect1" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -782,55 +727,69 @@
 
     <script src="posts.js"></script>
     <script>
-        // Current view state
-        let currentView = 'all';
-        let currentTag = null;
+        let currentPage = 'home';
+        let currentPostView = null;
 
-        function renderPostsByTag(tag = null) {
+        // Category icons mapping
+        const categoryIcons = {
+            'home': 'pen-nib',
+            'coding': 'code',
+            'medicine': 'stethoscope',
+            'bioinformatics': 'dna'
+        };
+
+        // Category titles mapping
+        const categoryTitles = {
+            'home': 'Recent Writings',
+            'coding': 'Coding Projects',
+            'medicine': 'Medical Research',
+            'bioinformatics': 'Bioinformatics Research'
+        };
+
+        function updateNavigation() {
+            // Remove active class from all nav links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to current page link
+            const hash = window.location.hash.replace('#', '') || 'home';
+            const activeLink = document.querySelector(`nav a[data-page="${hash}"]`) || 
+                             document.querySelector(`nav a[href="#${hash}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        function renderPosts(category = null) {
             const container = document.getElementById('posts-container');
-            container.innerHTML = '';
+            const header = document.getElementById('posts-header');
+            const aboutSections = document.getElementById('about-sections');
             
-            let postsToShow = allPosts;
-            
-            if (tag) {
-                postsToShow = allPosts.filter(post => post.tags.includes(tag));
-                currentView = 'tag';
-                currentTag = tag;
-                
-                const tagHeader = document.createElement('div');
-                tagHeader.innerHTML = `
-                    <div style="background: var(--bg-accent); border: 1px solid var(--border-color); 
-                               border-radius: 0; padding: 20px; margin-bottom: 30px;">
-                        <h3 style="font-family: 'Bodoni Moda', serif; color: var(--text-primary); 
-                                  margin: 0; text-transform: capitalize; letter-spacing: 0.03em; font-style: italic;">
-                            <i class="fas fa-tag"></i> ${tag}
-                        </h3>
-                        <p style="font-family: 'Tenor Sans', sans-serif; color: var(--text-secondary); 
-                                  font-size: 0.7rem; margin: 8px 0 0 0; letter-spacing: 0.1em; text-transform: uppercase;">
-                            Showing ${postsToShow.length} post${postsToShow.length === 1 ? '' : 's'} in this category
-                        </p>
-                        <button onclick="showAllPosts()" 
-                                style="background: transparent; border: 1px solid var(--text-primary); 
-                                       color: var(--text-primary); font-family: 'Tenor Sans', sans-serif; 
-                                       font-size: 0.65rem; padding: 6px 14px; border-radius: 0; cursor: pointer; 
-                                       margin-top: 15px; transition: all 0.3s ease; letter-spacing: 0.1em; text-transform: uppercase;"
-                                onmouseover="this.style.background='var(--text-primary)'; this.style.color='var(--bg-primary)'"
-                                onmouseout="this.style.background='transparent'; this.style.color='var(--text-primary)'">
-                            <i class="fas fa-arrow-left"></i> Back to All Posts
-                        </button>
-                    </div>
-                `;
-                container.appendChild(tagHeader);
+            // Show/hide about sections based on page
+            if (category) {
+                aboutSections.classList.add('hide');
             } else {
-                currentView = 'all';
-                currentTag = null;
+                aboutSections.classList.remove('hide');
             }
             
+            // Update header based on category
+            const page = category || 'home';
+            const icon = categoryIcons[page];
+            const title = categoryTitles[page];
+            header.innerHTML = `<i class="fas fa-${icon}"></i> ${title}`;
+            
+            container.innerHTML = '';
+            
+            let postsToShow = category ? 
+                allPosts.filter(post => post.category === category) : 
+                allPosts;
+            
             if (postsToShow.length === 0) {
-                container.innerHTML += `
+                container.innerHTML = `
                     <div class="no-posts">
                         <div class="terminal-empty">
-                            <div class="terminal-header">No posts found in "${tag}"</div>
+                            <div class="terminal-header">No ${category || ''} posts found</div>
                             <div class="terminal-body">
                                 <span class="output">No posts available for this category</span><br>
                                 <span class="output">Status: Awaiting content</span>
@@ -856,33 +815,18 @@
             });
         }
 
-        function getTagIcon(tag) {
-            const icons = {
-                'coding': 'code',
-                'medicine': 'stethoscope',
-                'bioinformatics': 'dna'
-            };
-            return icons[tag] || 'terminal';
-        }
-
-        // Global functions for navigation
-        window.showPostsByTag = function(tag) {
-            renderPostsByTag(tag);
-            window.location.hash = `tag-${tag}`;
-        };
-
-        window.showAllPosts = function() {
-            renderPostsByTag();
-            window.location.hash = '';
-        };
-
-        window.showFullPost = function(postId) {
+        function showFullPost(postId) {
             const post = allPosts.find(p => p.id === postId);
             if (post) {
                 const container = document.getElementById('posts-container');
+                const aboutSections = document.getElementById('about-sections');
+                aboutSections.classList.add('hide');
+                
+                currentPostView = currentPage;
+                
                 container.innerHTML = `
                     <div class="full-post">
-                        <button onclick="showAllPosts()" class="back-button">
+                        <button onclick="backToCategory()" class="back-button">
                             <i class="fas fa-arrow-left"></i> Back to Posts
                         </button>
                         
@@ -901,17 +845,6 @@
                             
                             <div class="post-footer" style="margin-top: 40px; padding-top: 25px; 
                                                           border-top: 1px solid var(--border-color);">
-                                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
-                                    ${post.tags ? post.tags.map(tag => 
-                                        `<a href="javascript:void(0)" onclick="showPostsByTag('${tag}')" 
-                                           style="background: var(--text-primary); color: var(--bg-primary); 
-                                                  padding: 4px 12px; border-radius: 0; 
-                                                  font-family: 'Tenor Sans', sans-serif; 
-                                                  font-size: 0.65rem; text-decoration: none; letter-spacing: 0.1em;
-                                                  text-transform: uppercase;">#${tag}</a>`
-                                    ).join('') : ''}
-                                </div>
-                                
                                 ${post.id === 'plasmyrage' ? `
                                 <a href="https://gravityeffect1.github.io/plasmyrage/" target="_blank" 
                                    style="background: var(--text-primary); color: var(--bg-primary); 
@@ -925,11 +858,39 @@
                         </article>
                     </div>
                 `;
-                window.location.hash = `post-${post.id}`;
             }
-        };
+        }
 
-        // Image modal functions
+        function backToCategory() {
+            if (currentPostView) {
+                if (currentPostView === 'home') {
+                    window.location.hash = '';
+                } else {
+                    window.location.hash = currentPostView;
+                }
+            } else {
+                window.location.hash = '';
+            }
+            currentPostView = null;
+        }
+
+        function handleRouting() {
+            const hash = window.location.hash.replace('#', '');
+            
+            if (hash === '' || hash === 'home') {
+                currentPage = 'home';
+                renderPosts();
+            } else if (hash === 'coding' || hash === 'medicine' || hash === 'bioinformatics') {
+                currentPage = hash;
+                renderPosts(hash);
+            } else if (hash === 'contact') {
+                // Scroll to footer
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            updateNavigation();
+        }
+
         function openImageModal(img) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImg');
@@ -944,23 +905,17 @@
             document.getElementById('imageModal').style.display = 'none';
         }
 
+        // Handle browser back/forward buttons
+        window.addEventListener('hashchange', handleRouting);
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            renderPostsByTag();
-            
-            // Handle hash navigation on page load
-            if (window.location.hash) {
-                const hash = window.location.hash.substr(1);
-                if (hash.startsWith('tag-')) {
-                    const tag = hash.replace('tag-', '');
-                    showPostsByTag(tag);
-                } else if (hash.startsWith('post-')) {
-                    const postId = hash.replace('post-', '');
-                    showFullPost(postId);
-                }
-            }
+            handleRouting();
         });
     </script>
     <script src="paper.js"></script>
 </body>
 </html>
+
+
+Just replace your `index.html` with this and you're done! One file, multiple "pages"! 🎯
