@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("Starting paper system with REAL verified papers and links");
     
-    // REAL papers with VERIFIED matching titles and working URLs from bioRxiv/medRxiv
+    
     const curatedPapers = [
         {
             title: "Design of highly functional genome editors by modeling the universe of CRISPR-Cas sequences",
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
             authors: "Xin Qi, Yuanchun Zhao, Zhuang Qi et al.",
             abstract: "This comprehensive review examines how machine learning, especially Transformer-based models, is revolutionizing drug discovery by accelerating the pace and reducing costs of new drug development through advanced algorithms and biological big data.",
             source: "MDPI Molecules",
-            url: "https://www.mdpi.com/1420-3049/29/4/903", // This is a real working link
+            url: "https://www.mdpi.com/1420-3049/29/4/903", 
             category: "ai_drug_discovery",
             date: "February 2024"
         },
@@ -89,14 +89,14 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
     
     let currentPaperIndex = 0;
-    let displayedPapers = []; // Track papers shown in current session
+    let displayedPapers = []; 
     
     const container = document.getElementById('paper-of-the-day');
     
-    // Initialize with loading animation
+   
     showLoadingState();
     
-    // Show first paper after animation
+    
     setTimeout(() => {
         showRandomPaper();
     }, 1200);
@@ -116,34 +116,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function showRandomPaper() {
-        // Get available papers (not shown in current session)
+       
         let availablePapers = curatedPapers.filter(paper => 
             !displayedPapers.includes(paper.title)
         );
         
-        // If all papers have been shown, reset the list
+   
         if (availablePapers.length === 0) {
             displayedPapers = [];
             availablePapers = [...curatedPapers];
         }
         
-        // Select random paper from available ones
+       
         const randomIndex = Math.floor(Math.random() * availablePapers.length);
         const selectedPaper = availablePapers[randomIndex];
         
-        // Mark this paper as displayed
+     
         displayedPapers.push(selectedPaper.title);
         
         displayPaper(selectedPaper);
     }
     
     function displayPaper(paper) {
-        // Truncate text for better display
+       
         const title = paper.title.length > 85 ? paper.title.substring(0, 85) + '...' : paper.title;
         const authors = paper.authors.length > 70 ? paper.authors.substring(0, 70) + '...' : paper.authors;
         const abstract = paper.abstract.length > 160 ? paper.abstract.substring(0, 160) + '...' : paper.abstract;
         
-        // Category color mapping
+       
         const categoryColors = {
             'ai_crispr': 'var(--accent-green)',
             'neurotherapeutics': '#9b59b6',
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
                        class="read-more" style="font-size: 0.8rem; transition: all 0.3s ease;"
                        onmouseover="this.style.textShadow='0 0 5px var(--accent-green)'"
                        onmouseout="this.style.textShadow='none'"
-                       onclick="console.log('✅ Read more clicked:', '${paper.url}')">
+                       onclick="console.log(' Read more clicked:', '${paper.url}')">
                         Access Paper &gt;
                     </a>
                 </div>
@@ -231,19 +231,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const readMoreLink = document.getElementById('read-more-link');
         
         paperLink.addEventListener('click', function(e) {
-            console.log('🔗 Paper title clicked - Opening:', paper.title);
-            console.log('📋 URL:', paper.url);
+            console.log(' Paper title clicked - Opening:', paper.title);
+            console.log('URL:', paper.url);
         });
         
         readMoreLink.addEventListener('click', function(e) {
-            console.log('🔗 Read more clicked - Opening:', paper.title);
-            console.log('📋 URL:', paper.url);
+            console.log(' Read more clicked - Opening:', paper.title);
+            console.log(' URL:', paper.url);
         });
     }
     
     // Global refresh function
     window.refreshPaper = function() {
-        console.log('🔄 Refresh button clicked');
+        console.log('Refresh button clicked');
         
         // Show loading state briefly
         const refreshBtn = document.getElementById('refresh-btn');
@@ -335,7 +335,7 @@ function addImageWidgets() {
         </div>
     `;
     
-    // Insert widgets into sidebar
+
     sidebar.insertBefore(featuredWidget, sidebar.children[1]);
     sidebar.appendChild(galleryWidget);
     
@@ -381,9 +381,9 @@ function closeModal() {
     initializeSidebarPlaceholders();
     
     // Add some console info for debugging
-    console.log('✅ Paper system initialized with', curatedPapers.length, 'verified papers');
-    console.log('🔗 All papers have matching titles and working URLs');
-    console.log('📊 Categories available:', [...new Set(curatedPapers.map(p => p.category))]);
+    console.log(' Paper system initialized with', curatedPapers.length, 'verified papers');
+    console.log(' All papers have matching titles and working URLs');
+    console.log(' Categories available:', [...new Set(curatedPapers.map(p => p.category))]);
 });
 
 // Function to add placeholder content to sidebar widgets
