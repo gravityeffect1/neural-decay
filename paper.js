@@ -299,39 +299,39 @@ function addImageWidgets() {
             <h2 class="widget-title"><i class="fas fa-images"></i> LAB_GALLERY</h2>
         </div>
         <div class="widget-content" style="padding: 15px;">
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-                <img src="images/diva.jpg" alt="diva">
-                     style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
-                            border: 1px solid var(--border-color); cursor: pointer; 
-                            transition: all 0.3s ease;"
-                     onclick="showModal(this.src, 'Diva')"
-                     onmouseover="this.style.borderColor='var(--accent-cyan)'; this.style.boxShadow='0 0 10px rgba(0, 255, 255, 0.3)'"
-                     onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-                
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
-                     style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
-                            border: 1px solid var(--border-color); cursor: pointer; 
-                            transition: all 0.3s ease;"
-                     onclick="showModal(this.src, 'Cybernetic Interface')"
-                     onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
-                     onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-                
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
-                     style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
-                            border: 1px solid var(--border-color); cursor: pointer; 
-                            transition: all 0.3s ease;"
-                     onclick="showModal(this.src, 'Digital Surgery')"
-                     onmouseover="this.style.borderColor='var(--accent-red)'; this.style.boxShadow='0 0 10px rgba(255, 0, 64, 0.3)'"
-                     onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-                
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAxQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooA" 
-                     style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
-                            border: 1px solid var(--border-color); cursor: pointer; 
-                            transition: all 0.3s ease;"
-                     onclick="showModal(this.src, 'Neural Mapping')"
-                     onmouseover="this.style.borderColor='#9b59b6'; this.style.boxShadow='0 0 10px rgba(155, 89, 182, 0.3)'"
-                     onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
-            </div>
+           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+    <img src="images/diva.jpg" alt="diva"
+         style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
+                border: 1px solid var(--border-color); cursor: pointer; 
+                transition: all 0.3s ease;"
+         onclick="showModal(this.src, 'Diva')"
+         onmouseover="this.style.borderColor='var(--accent-cyan)'; this.style.boxShadow='0 0 10px rgba(0, 255, 255, 0.3)'"
+         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+    
+    <img src="images/makeup.jpg" alt="makeup"
+         style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
+                border: 1px solid var(--border-color); cursor: pointer; 
+                transition: all 0.3s ease;"
+         onclick="showModal(this.src, 'Makeup')"
+         onmouseover="this.style.borderColor='var(--accent-green)'; this.style.boxShadow='0 0 10px rgba(0, 255, 65, 0.3)'"
+         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+    
+    <img src="images/peony.jpg" alt="peony"
+         style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
+                border: 1px solid var(--border-color); cursor: pointer; 
+                transition: all 0.3s ease;"
+         onclick="showModal(this.src, 'Peony')"
+         onmouseover="this.style.borderColor='var(--accent-red)'; this.style.boxShadow='0 0 10px rgba(255, 0, 64, 0.3)'"
+         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+    
+    <img src="images/swans.jpg" alt="swans"
+         style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
+                border: 1px solid var(--border-color); cursor: pointer; 
+                transition: all 0.3s ease;"
+         onclick="showModal(this.src, 'Swans')"
+         onmouseover="this.style.borderColor='#9b59b6'; this.style.boxShadow='0 0 10px rgba(155, 89, 182, 0.3)'"
+         onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+</div>
         </div>
     `;
     
