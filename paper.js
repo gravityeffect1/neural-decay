@@ -300,7 +300,7 @@ function addImageWidgets() {
         </div>
         <div class="widget-content" style="padding: 15px;">
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-                <img src="https://github.com/gravityeffect1/neural-decay/raw/34e11e04d70e4307eade4bd80308424eefa8a355/images/diva.jpg" alt="diva">
+                <img src="images/diva.jpg" alt="diva">
                      style="width: 100%; height: 80px; object-fit: cover; border-radius: 3px; 
                             border: 1px solid var(--border-color); cursor: pointer; 
                             transition: all 0.3s ease;"
