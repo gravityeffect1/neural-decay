@@ -19,7 +19,6 @@ Partea tehnică a fost, paradoxal, mai puțin despre „a scrie cod" și mai mul
 În concluzie, Plasmyrage nu e doar un proiect, ci un exercițiu de răbdare, disciplină și (să recunoaștem) un strop de nebunie. Nu garantez că va schimba modul în care studenții privesc medicina sau învățarea. Dar garantez că m-a schimbat pe mine. Și cred că, în fond, asta e esența oricărui demers „tangibil": nu produsul final, ci omul care devii pe parcurs.`,
         tags: ['coding', 'javascript', 'html', 'css', 'github', 'medical-education']
     }
-].sort((a, b) => new Date(b.date) - new Date(a.date));
 
 //filosofie1
 
@@ -57,5 +56,6 @@ Partea tehnică a fost, paradoxal, mai puțin despre „a scrie cod" și mai mul
     `
 },
 
+].sort((a, b) => new Date(b.date) - new Date(a.date));
 
 
