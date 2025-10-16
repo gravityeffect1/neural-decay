@@ -17,9 +17,9 @@ Din punct de vedere tehnic, Plasmyrage s-a construit pe câteva piloni simpli da
 Am jonglat cu structuri de date și logica aplicației până să prindă contur ceva care să nu pară doar o machetă, ci un instrument funcțional. Nu am folosit framework-uri sofisticate — intenționat. A fost mai mult despre a înțelege „scheletul" din spatele aplicației, decât despre a masca imperfecțiunile cu unelte avansate. 
 Partea tehnică a fost, paradoxal, mai puțin despre „a scrie cod" și mai mult despre a învăța să îți păstrezi calmul când ceva aparent banal refuză să funcționeze. 
 În concluzie, Plasmyrage nu e doar un proiect, ci un exercițiu de răbdare, disciplină și (să recunoaștem) un strop de nebunie. Nu garantez că va schimba modul în care studenții privesc medicina sau învățarea. Dar garantez că m-a schimbat pe mine. Și cred că, în fond, asta e esența oricărui demers „tangibil": nu produsul final, ci omul care devii pe parcurs.`,
-        // FIXED: Added 'coding' tag so it appears when clicking the coding navigation button
         tags: ['coding', 'javascript', 'html', 'css', 'github', 'medical-education']
     }
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
 
 
