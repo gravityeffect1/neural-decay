@@ -34,7 +34,6 @@
         html {
             scroll-behavior: smooth;
         }
-
         body {
             background: var(--bg-primary);
             color: var(--text-primary);
@@ -74,7 +73,7 @@
     background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid var(--border-color);
     padding: 35px 0;
-    position: relative;  /* ← CHANGED FROM sticky TO relative */
+    position: relative;
     z-index: 100;
     backdrop-filter: blur(20px) saturate(180%);
     transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -172,6 +171,29 @@
             transform: translateX(-50%) scaleX(1);
         }
         
+       
+        .banner-header {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .banner-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .banner-header:hover img {
+            transform: scale(1.02);
+            filter: brightness(1.05);
+        }
+        
         /* Main Content */
         main {
             display: grid;
@@ -250,7 +272,7 @@
             font-size: 1rem;
         }
         
-        /* Blog Posts - Ultra Elegant */
+        
         .blog-posts h2 {
             font-family: 'Bodoni Moda', serif;
             color: var(--text-primary);
@@ -333,7 +355,6 @@
             line-height: 1.35;
             font-style: italic;
         }
-
         .post h3 a {
             color: inherit;
             text-decoration: none;
@@ -607,6 +628,10 @@
             .terminal-body {
                 padding: 32px 24px;
             }
+            
+            .banner-header {
+                height: 200px;
+            }
         }
         
        
@@ -625,7 +650,7 @@
             animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         
-        /* Image gallery hover effects - refined */
+   
         .widget-content img {
             transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             filter: grayscale(0%);
@@ -638,7 +663,7 @@
             filter: grayscale(0%) brightness(1.05);
         }
         
-        /* Decorative elements */
+        
         .logo::before {
             content: '✦';
             position: absolute;
@@ -677,6 +702,11 @@
         </div>
     </header>
 
+  <!--header-->
+    <div class="banner-header">
+        <img src="images/change-moth.png" alt="Neural Decay Banner">
+    </div>
+
     <div class="container">
         <main>
             <div class="content-area">
@@ -693,11 +723,10 @@
                             
                             <span class="prompt">Mission</span> <span class="command">Acta Non Verba</span><br>
                             <span class="output">Exploring where biological systems meet digital architecture</span><br>
-                            <span class="output">Status: Online · Ready to dissedt tissue and machine learning alike</span><br>
+                            <span class="output">Status: Online · Ready to dissect tissue and machine learning alike</span><br>
                         </div>
                     </div>
                 </div>
-
                 <div id="about-section" class="terminal-welcome">
                     <div class="terminal-header">
                         Author
@@ -713,11 +742,10 @@
         
                                 <div class="output" style="flex: 1;">
                             <span class="prompt">Profile</span> <span class="command">Sara Sova</span><br>
-                            <span class="output">Medical student  at UMFCD, Bucharest, navigating the beautiful chaos of second year. Currently surviving on phonk music, mania, and the occasional existential crisis about cuboidal epithelium. Coding when I'm not crying over anatomy.</span><br>
+                            <span class="output">Medical student at UMFCD, Bucharest, navigating the beautiful chaos of second year. Currently surviving on phonk music, mania, and the occasional existential crisis about cuboidal epithelium. Coding when I'm not crying over anatomy.</span><br>
                         </div>
                     </div>
                 </div>
-
                 <div id="coding" class="blog-posts">
                     <h2><i class="fas fa-pen-nib"></i> Recent Writings</h2>
                     <div id="posts-container">
@@ -725,7 +753,6 @@
                     </div>
                 </div>
             </div>
-
             <aside class="sidebar">
                 <div class="widget">
                     <div class="widget-header">
@@ -735,8 +762,6 @@
                  
                     </div>
                 </div>
-
-
 <div class="widget">
     <div class="widget-header">
         <h2 class="widget-title"><i class="fas fa-brain"></i> Neural Activity</h2>
@@ -768,7 +793,6 @@
 </div>
             </aside>
         </main>
-
         <div class="widget">
             <div class="widget-header">
                 <h2 class="widget-title">
@@ -812,7 +836,6 @@
             </div>
         </div>
     </div>
-
    <footer id="contact">
         <div class="container">
             <div class="footer-content">
@@ -827,20 +850,17 @@
             </div>
         </div>
     </footer>
-
     
     <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95);" onclick="closeImageModal()">
         <span style="position: absolute; top: 15px; right: 35px; color: var(--text-primary); font-size: 40px; font-weight: 300; cursor: pointer; font-family: 'Cormorant', serif;" onclick="closeImageModal()">&times;</span>
         <img id="modalImg" style="margin: auto; display: block; width: 80%; max-width: 700px; margin-top: 5%; border: 1px solid var(--border-color);">
         <div id="caption" style="margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: var(--text-primary); padding: 10px 0; font-family: 'Cormorant', serif;"></div>
     </div>
-
     <script src="posts.js"></script>
     <script>
         // Current view state
         let currentView = 'all';
         let currentTag = null;
-
         function renderPostsByTag(tag = null) {
             const container = document.getElementById('posts-container');
             container.innerHTML = '';
@@ -910,7 +930,6 @@
                 container.appendChild(postElement);
             });
         }
-
         function getTagIcon(tag) {
             const icons = {
                 'coding': 'code',
@@ -919,7 +938,6 @@
             };
             return icons[tag] || 'terminal';
         }
-
    window.showPostsByTag = function(tag) {
     renderPostsByTag(tag);
     window.location.hash = `tag-${tag}`;
@@ -930,12 +948,10 @@
         }
     }, 100);
 };
-
         window.showAllPosts = function() {
             renderPostsByTag();
             window.location.hash = '';
         };
-
         window.showFullPost = function(postId) {
             const post = allPosts.find(p => p.id === postId);
             if (post) {
@@ -993,8 +1009,7 @@
                 window.location.hash = `post-${post.id}`;
             }
         };
-
-        // Image modal functions
+        
         function openImageModal(img) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImg');
@@ -1004,16 +1019,25 @@
             modalImg.src = img.src;
             caption.innerHTML = img.alt;
         }
-
         function closeImageModal() {
             document.getElementById('imageModal').style.display = 'none';
         }
-
-        // Initialize on page load
+        
+        function showModal(src, caption) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            const captionText = document.getElementById('caption');
+            
+            modal.style.display = 'block';
+            modalImg.src = src;
+            captionText.innerHTML = caption;
+        }
+        
+       
         document.addEventListener('DOMContentLoaded', function() {
             renderPostsByTag();
             
-            // Handle hash navigation on page load
+         
             if (window.location.hash) {
                 const hash = window.location.hash.substr(1);
                 if (hash.startsWith('tag-')) {
