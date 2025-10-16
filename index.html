@@ -920,11 +920,16 @@
             return icons[tag] || 'terminal';
         }
 
-        // Global functions for navigation
-        window.showPostsByTag = function(tag) {
-            renderPostsByTag(tag);
-            window.location.hash = `tag-${tag}`;
-        };
+   window.showPostsByTag = function(tag) {
+    renderPostsByTag(tag);
+    window.location.hash = `tag-${tag}`;
+    setTimeout(() => {
+        const writingsSection = document.getElementById('coding');
+        if (writingsSection) {
+            writingsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, 100);
+};
 
         window.showAllPosts = function() {
             renderPostsByTag();
