@@ -949,11 +949,16 @@
                             </div>
                             <h1>${post.title}</h1>
                             
-                            <div class="post-content" style="color: var(--text-primary); line-height: 2.1;">
-                                ${post.content.split('\n\n').map(paragraph => 
-                                    `<p>${paragraph.trim().replace(/\n/g, '<br>')}</p>`
-                                ).join('')}
-                            </div>
+                          <div class="post-content" style="color: var(--text-primary); line-height: 2.1;">
+    ${post.content.split('\n\n').map(section => {
+        section = section.trim();
+        if (section.startsWith('<')) {
+            return section;
+        } else {
+            return `<p>${section.replace(/\n/g, '<br>')}</p>`;
+        }
+    }).join('')}
+</div>
                             
                             <div class="post-footer" style="margin-top: 40px; padding-top: 25px; 
                                                           border-top: 1px solid var(--border-color);">
