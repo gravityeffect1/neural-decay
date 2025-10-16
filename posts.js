@@ -40,9 +40,7 @@ const allPosts = [
         tags: ['reflections', 'philosophy', 'identity'],
         excerpt: 'Lumea în care trăim este una în care schimbarea nu este doar inevitabilă, ci și vitală pentru supraviețuire. O reflecție despre identitate, măștile pe care le purtăm și curajul de a fi autentici într-o lume în continuă transformare.',
         content: `
-            <img src="images/ouroboros.png" alt="Trogoautoegocrat" 
-                 style="width: 100%; max-width: 400px; display: block; margin: 0 auto 30px; 
-                        border: 1px solid var(--border-color);">
+            <img src="images/ouroboros.png" alt="Trogoautoegocrat" style="width: 100%; max-width: 400px; display: block; margin: 0 auto 30px; border: 1px solid var(--border-color);">
             
             Lumea în care trăim este una în care schimbarea nu este doar inevitabilă, ci și vitală pentru supraviețuire. Suntem martori unei  ere în care valorile noastre sociale se schimbă peste noapte, la fel cum se schimbă prețul la bitcoin sau discountul de pe Shein; întrebarea "ce înseamnă să fii om" devine tot mai urgentă și mai agasantă, iar singura constantă a peisajului contemporan este fix aceastǎ metamorfozǎ amețitoare ce ne amenință identitatea.
             
@@ -56,3 +54,4 @@ const allPosts = [
         `
     }
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
