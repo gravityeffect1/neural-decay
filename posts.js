@@ -18,7 +18,8 @@ Am jonglat cu structuri de date și logica aplicației până să prindă contur
 Partea tehnică a fost, paradoxal, mai puțin despre „a scrie cod" și mai mult despre a învăța să îți păstrezi calmul când ceva aparent banal refuză să funcționeze. 
 În concluzie, Plasmyrage nu e doar un proiect, ci un exercițiu de răbdare, disciplină și (să recunoaștem) un strop de nebunie. Nu garantez că va schimba modul în care studenții privesc medicina sau învățarea. Dar garantez că m-a schimbat pe mine. Și cred că, în fond, asta e esența oricărui demers „tangibil": nu produsul final, ci omul care devii pe parcurs.`,
         tags: ['coding', 'javascript', 'html', 'css', 'github', 'medical-education']
-    },  // virgula missing
+    },
+    // Filosofie 1 - despre schimbare
     {
         id: 'despre-schimbare',
         title: 'Despre Schimbare și Autenticitate',
@@ -53,4 +54,3 @@ Partea tehnică a fost, paradoxal, mai puțin despre „a scrie cod" și mai mul
         `
     }
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
-
