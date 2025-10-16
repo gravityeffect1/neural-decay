@@ -3,7 +3,7 @@ const allPosts = [
         id: 'plasmyrage',
         title: 'Plasmyrage: O Odă închinată sângelui',
         category: 'coding',
-        date: '2025-09-18',
+        date: '2025-09-17',
         excerpt: 'Un proiect personal care a început din dorința de a crea ceva tangibil cu propriile mâini. Learning tools made by students for students.',
         content: `O Oda închinată sângelui? Plasmyrage a pornit din dorința oricărui student la medicină, care încă din prima zi se visează „mare medic", de a face ceva TANGIBIL cu propriile mâini. 
 Medicina, în esență, reprezintă dedicare și ambiție. Dedicare, evident, pentru a continua drumul deja început încă de la meditațiile din liceu pentru admitere, pentru menținerea acelui mindset de „best of the best". Iar ambiția? Ei bine, de obicei se rezumă la ambiția notelor, a burselor și la dorința de a-ți zdrobi competiția. Nimic greșit cu acest spirit de gladiator academic, desigur. 
@@ -20,6 +20,7 @@ Partea tehnică a fost, paradoxal, mai puțin despre „a scrie cod" și mai mul
         tags: ['coding', 'javascript', 'html', 'css', 'github', 'medical-education']
     }
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
 
 
 
