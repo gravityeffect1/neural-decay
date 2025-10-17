@@ -55,7 +55,16 @@ const allPosts = [
             
             <p>Schimbarea mi-a fost deopotrivă prieten și dușman, dar acum, curajul meu stă în abilitatea de a scrie și de a recunoaște părțile mai puțin plăcute din viața unui "adult". Nu vă uitați pe voi înșiși doar pentru a fi ținuți minte pe moment- oricum soarele va exploda, deci singurii oameni care vor conta sunteți fie voi, fie cei la care țineți cu adevărat. Cei ce vă iubesc vă văd pe voi și aleg să se uite dincolo de aparențe superficiale sau de stilul vostru vestimentar. :)</p>
         `
-    }
+    },
+    {
+        id: 'esofagul-Baret-si-de-imi-place-histologia',
+        title: 'Esofagul Baret si de ve imi place histologia',
+        date: '2025-10-17',
+        category: 'medicine',
+        tags: [ 'histology', 'GI tract', 'pathology', 'oncology' ],
+        excerpt: ' Transformarea celulelor esofagiene si cascada displazică- modelul clasic pentru carcinogeneza gastrointestinală. Înțelegerea precisă a diferențelor microscopice, chiar şi rudimentară, dictează momentul intervenției terapeutice. ',
+        content: ' 
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
 
 
