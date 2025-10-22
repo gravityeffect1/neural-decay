@@ -93,9 +93,26 @@ const allPosts = [
         <h2>Concluzii: Ce Ar Trebui Să Reținem Din Această Incursiune Histopatologică</h2>
         
         <p>Esofagul Barrett ilustrează perfect tensiunea fundamentală a medicinei moderne – între certitudinea pe care o căutăm și incertitudinea cu care trebuie să trăim. Fiecare biopsie spune o poveste incompletă, fiecare marker molecular adaugă context, dar și complexitate. Și în final, decizia aparține omului – patologul care privește la microscop, clinicianul care recomandă tratamentul, pacientul care alege ce risc este dispus să accepte. Cu cât înțelegem mai bine mecanismele moleculare, cu atât descoperim mai multă heterogenitate. Cunoașterea adâncă ne apropie de certitudine clinică sau ne îndepărtează de ea? Și ce facem când știința avansată generează mai multe întrebări decât răspunsuri pentru pacientul din fața noastră?</p>
+        <h2>Referințe și linkuri</h2>
+        <ol>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/23689523/" target="_blank">Molecular markers for Barrett’s esophagus and its progression to adenocarcinoma</a> — PubMed</li>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1856460/" target="_blank">Molecular basis of Barrett’s oesophagus and oesophageal adenocarcinoma</a> — PMC</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/34757142/" target="_blank">Abnormal TP53 Predicts Risk of Progression in Patients With Barrett’s Esophagus Regardless of a Diagnosis of Dysplasia</a> — PubMed</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/12916666/" target="_blank">Biomarkers in Barrett’s esophagus</a> — PubMed</li>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5198232/" target="_blank">Progression of Barrett’s esophagus toward esophageal adenocarcinoma</a> — PMC</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/40223170/" target="_blank">The future is now: advancing p53 immunohistochemistry in Barrett’s oesophagus</a> — PubMed</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/29608884/" target="_blank">Detection of Mutations in Barrett’s Esophagus Before Progression to High-Grade Dysplasia or Adenocarcinoma</a> — PubMed</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/11353048/" target="_blank">p53 Gene Mutation and Protein Accumulation During Neoplastic Progression in Barrett’s Esophagus</a> — PubMed</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/37259801/" target="_blank">Categorizing Risks within Barrett’s Esophagus To Guide Clinical Practice</a> — PubMed</li>
+            <li><a href="https://www.mdpi.com/2073-4425/16/3/270" target="_blank">Molecular Abnormalities and Carcinogenesis in Barrett’s Esophagus</a> — MDPI</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/26104750/" target="_blank">Derivation of genetic biomarkers for cancer risk stratification in non-dysplastic Barrett’s oesophagus</a> — PubMed</li>
+            <li><a href="https://www.wjgnet.com/1007-9327/full/v16/i45/5669.htm" target="_blank">Biomarkers in Barrett’s esophagus and esophageal adenocarcinoma: Predictors of progression and prognosis</a> — WJGNet</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/9155671/" target="_blank">Mutation analysis of the p53, APC, and p16 genes in the Barrett’s oesophagus, dysplasia, and adenocarcinoma</a> — PubMed</li>
+        </ol>
     `
 }
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
 
 
 
