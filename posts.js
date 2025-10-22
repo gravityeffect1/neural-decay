@@ -99,6 +99,7 @@ const allPosts = [
         <p>Esofagul Barrett ilustrează perfect tensiunea fundamentală a medicinei moderne, între certitudinea pe care o căutăm și incertitudinea cu care trebuie să trăim. Fiecare biopsie spune o poveste incompletă, fiecare marker molecular adaugă context, dar și complexitate. Și în final, decizia aparține omului: patologul care privește la microscop, clinicianul care recomandă tratamentul, pacientul care alege ce risc este dispus să accepte. Cu cât înțelegem mai bine mecanismele moleculare, cu atât descoperim mai multă heterogenitate. Cunoașterea adâncă ne apropie de certitudine clinică sau ne îndepărtează de ea? Și ce facem când știința avansată generează mai multe întrebări decât răspunsuri pentru pacientul din fața noastră?</p>
         <h2>Referințe și linkuri</h2>
         <ol>
+        <li><a href="https://shop.lww.com/Histology--A-Text-and-Atlas/p/9781975181536" target="_blank" rel="noopener noreferrer">Ross and Pawlina's Histology: A Text and Atlas</a></li>
             <li><a href="https://pubmed.ncbi.nlm.nih.gov/23689523/" target="_blank">Molecular markers for Barrett’s esophagus and its progression to adenocarcinoma</a> — PubMed</li>
             <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1856460/" target="_blank">Molecular basis of Barrett’s oesophagus and oesophageal adenocarcinoma</a> — PMC</li>
             <li><a href="https://pubmed.ncbi.nlm.nih.gov/34757142/" target="_blank">Abnormal TP53 Predicts Risk of Progression in Patients With Barrett’s Esophagus Regardless of a Diagnosis of Dysplasia</a> — PubMed</li>
@@ -116,6 +117,7 @@ const allPosts = [
     `
 }
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
 
 
 
