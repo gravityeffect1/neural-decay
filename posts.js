@@ -95,8 +95,9 @@ const allPosts = [
         
         <p>Esofagul Barrett ilustrează perfect tensiunea fundamentală a medicinei moderne – între certitudinea pe care o căutăm și incertitudinea cu care trebuie să trăim. Fiecare biopsie spune o poveste incompletă, fiecare marker molecular adaugă context, dar și complexitate. Și în final, decizia aparține omului – patologul care privește la microscop, clinicianul care recomandă tratamentul, pacientul care alege ce risc este dispus să accepte. Cu cât înțelegem mai bine mecanismele moleculare, cu atât descoperim mai multă heterogenitate. Cunoașterea adâncă ne apropie de certitudine clinică sau ne îndepărtează de ea? Și ce facem când știința avansată generează mai multe întrebări decât răspunsuri pentru pacientul din fața noastră?</p>
     `
-},
+}
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
 
 
 
