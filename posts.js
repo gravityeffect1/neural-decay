@@ -60,7 +60,7 @@ const allPosts = [
     id: 'esofagul-barrett',
     title: 'Esofagul Barrett: De la Metaplazie la Adenocarcinom',
     date: '2025-10-22',
-    category: 'medical',
+    category: 'medicine',
     tags: ['histologie', 'oncologie', 'educație medicală', 'patologie'],
     excerpt: 'O incursiune educațională în transformarea malignă a esofagului - de la metaplazia benignă la adenocarcinomul invaziv. Explorăm secvența neoplazică, mecanismele moleculare și implicațiile clinice ale Esofagului Barrett.',
     content: `
@@ -117,6 +117,7 @@ const allPosts = [
     `
 }
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
 
 
 
