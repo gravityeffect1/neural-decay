@@ -57,7 +57,6 @@ const allPosts = [
         `
     },
     {
-       {
     id: 'esofagul-barrett',
     title: 'Esofagul Barrett: De la Metaplazie la Adenocarcinom',
     date: '2025-10-22',
@@ -97,6 +96,7 @@ const allPosts = [
     `
 }
 ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
 
 
 
